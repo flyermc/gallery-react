@@ -6,17 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image />
-        </a>
+        <Image image_src="https://lh3.googleusercontent.com/-LbvS6uL7FQw/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcw6rdu5ZUEoC_3pbTzOQRDr6B5Jg.CMID/s64-c/photo.jpg"/>
       </header>
     </div>
   );

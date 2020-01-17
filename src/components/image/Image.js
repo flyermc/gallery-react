@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const Image = () => {
+export const Image = ({image_src}) => {
     return (
-        <div> Hello World here</div>
+            <img src={image_src}></img>
     )
+}
+
+Image.propTypes = {
+    image_src: PropTypes.string,
 }
