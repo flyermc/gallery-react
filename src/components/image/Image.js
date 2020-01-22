@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { openImage } from '../../store/actions';
 
-export const Image = ({image_src}) => {
+export const Image = ({imageSrc}) => {
     return (
-            <img src={image_src}></img>
+            <img src={imageSrc}></img>
     )
 }
-
-Image.propTypes = {
-    image_src: PropTypes.string,
+const mapDispatchToProps = (dispatch) => {
+    return {
+        openImage: (data) => dispatch(openImage(data)),
+    }
 }
+Image.propTypes = {
+    imageSrc: PropTypes.string,
+    openImage: PropTypes.func.isRequired,
+}
+
+export default connect(null, mapDispatchToProps)(Image);
