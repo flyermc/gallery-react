@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { openImage } from '../../store/actions';
 
-const clickImage = (imageSrc) => (openImage(imageSrc));
-
-export const Image = ({imageSrc}) => {
+export const Image = ({imageSrc, clickImage}) => {
     return (
             <img src={imageSrc} onClick={(imageSrc) => clickImage(imageSrc)}></img>
     )
