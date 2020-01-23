@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { openImage } from '../../store/actions';
+import { closeImage } from '../../store/actions';
 
 const ImageDetails = ({ imageSrc, closeImage }) => {
     return (
@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeImage: () => dispatch(openImage(null))
+        closeImage: () => dispatch(closeImage())
     }
 }
 

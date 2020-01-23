@@ -9,8 +9,12 @@ import { openImage } from '../store/actions';
 const ImageContainer = ({ currentImage }) => {
     return (
         <Fragment>
-            { !currentImage && <Image imageSrc="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png"/ > }
-            { currentImage && <ImageDetails /> }
+            { !currentImage &&
+            <Fragment>
+              <Image imageSrc="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png" />
+              <Image imageSrc="https://ssl.gstatic.com/play-apps-publisher-rapid/fox/ebdc0e5c50a832cc2c6baf79fab2585c/fox/gwt/970D5B88B010734097B54B173E4FC446.cache.svg" />
+            </Fragment>}
+            { !!currentImage && <ImageDetails /> }
         </Fragment>
     )
 }
