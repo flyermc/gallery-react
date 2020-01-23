@@ -1,7 +1,7 @@
 import { OPEN_IMAGE } from './actions';
 
 const initialState = {
-    currentImage: ""
+    currentImage: null,
 }
 
 function galleryReducer(state = initialState, action) {
