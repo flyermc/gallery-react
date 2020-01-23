@@ -5,7 +5,7 @@ import { openImage } from '../../store/actions';
 
 export const Image = ({imageSrc, clickImage}) => {
     return (
-            <img src={imageSrc} onClick={(imageSrc) => clickImage(imageSrc)}></img>
+            <img src={imageSrc} onClick={(data) => clickImage({imageSrc})}></img>
     )
 }
 
