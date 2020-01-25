@@ -15,10 +15,10 @@ const store1 = createStore(galleryReducer);
 function App() {
     return (
             <Provider store={store}>
-    <div className="App">
+            <div className="App">
             <header className="App-header">
             <ImageContainer />
-      </header>
+            </header>
             </div>
             </Provider>
   );
