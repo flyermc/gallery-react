@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import { Image, ImageDetails } from '../components';
 
-import { openImage } from '../store/actions';
 import { Container } from './styled';
 
 const ImageContainer = ({ currentImage }) => {

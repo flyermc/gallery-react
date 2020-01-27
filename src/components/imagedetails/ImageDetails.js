@@ -5,7 +5,7 @@ import { closeImage } from '../../store/actions';
 
 const ImageDetails = ({ imageSrc, closeImage }) => {
     return (
-            <img src={imageSrc} onClick={() => closeImage()}/>
+            <img src={imageSrc} onClick={() => closeImage()} alt='Loading' />
     )
 }
 

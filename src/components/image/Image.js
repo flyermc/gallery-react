@@ -6,7 +6,7 @@ import { openImage } from '../../store/actions';
 export const Image = ({imageSrc, clickImage}) => {
     const dispatch = useDispatch()
     return (
-            <img src={imageSrc} onClick={() => dispatch(openImage(imageSrc))}></img>
+            <img src={imageSrc} onClick={() => dispatch(openImage(imageSrc))} alt='Loading...' />
     )
 }
 

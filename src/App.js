@@ -6,11 +6,8 @@ import { Provider } from 'react-redux';
 import { ImageContainer } from './containers';
 
 import configureStore from './store/store';
-import { createStore } from 'redux';
-import galleryReducer from './store/reducers';
 
 const store = configureStore();
-const store1 = createStore(galleryReducer);
 
 function App() {
     return (
@@ -22,12 +19,6 @@ function App() {
             </div>
             </Provider>
   );
-}
-
-const mapStateToProps = state => {
-    return {
-        currentImage: state.currentImage,
-    }
 }
 
 Image.propTypes = {
