@@ -8,7 +8,7 @@ function galleryReducer(state = initialState, action) {
     switch (action.type) {
     case OPEN_IMAGE:
         return {
-            ...state, currentImage: action.data.imageSrc
+            ...state, currentImage: action.data
         }
     case CLOSE_IMAGE:
         return {
