@@ -6,7 +6,7 @@ import { closeImage } from '../../store/actions';
 const ImageDetails = ({imageSrc}) => {
     const dispatch = useDispatch()
     return (
-            <img src={imageSrc} onClick={() => dispatch(closeImage())} alt='Loading...' />
+        <img src={imageSrc} onClick={() => dispatch(closeImage())} alt='Loading...' />
     )
 }
 

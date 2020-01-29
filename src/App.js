@@ -11,14 +11,14 @@ const store = configureStore();
 
 function App() {
     return (
-            <Provider store={store}>
+        <Provider store={store}>
             <div className="App">
-            <header className="App-header">
-            <ImageContainer />
-            </header>
+                <header className="App-header">
+                    <ImageContainer />
+                </header>
             </div>
-            </Provider>
-  );
+        </Provider>
+    );
 }
 
 Image.propTypes = {
