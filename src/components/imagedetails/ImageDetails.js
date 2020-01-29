@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { closeImage } from '../../store/actions';
 
-const ImageDetails = ({ imageSrc, closeImage }) => {
+const ImageDetails = ({imageSrc}) => {
+    const dispatch = useDispatch()
     return (
-            <img src={imageSrc} onClick={() => closeImage()} alt='Loading' />
+            <img src={imageSrc} onClick={() => dispatch(closeImage())} alt='Loading...' />
     )
 }
 
@@ -17,10 +18,4 @@ const mapStateToProps = state => {
     return {imageSrc: state.currentImage}
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        closeImage: () => dispatch(closeImage())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ImageDetails);
+export default connect(mapStateToProps)(ImageDetails);
