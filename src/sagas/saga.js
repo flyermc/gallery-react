@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import * as APIService from '../services/galleryService';
-import IMAGES_REQUESTED from '../store/actions';
+import { IMAGES_REQUESTED } from '../store/actions';
 
 function* fetchImages(action) {
     try {
