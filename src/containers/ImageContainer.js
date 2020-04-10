@@ -1,12 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
 import { Image, ImageDetails } from '../components';
+
+import { requestImages } from '../store/actions';
 
 import { Container } from './styled';
 
 const ImageContainer = ({ currentImage }) => {
+    let dispatch = useDispatch();
+
+    dispatch(requestImages());
     return (
         <Fragment>
             { !currentImage &&

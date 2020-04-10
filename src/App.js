@@ -6,9 +6,6 @@ import { Provider } from 'react-redux';
 import { ImageContainer } from './containers';
 
 import configureStore from './store/store';
-import createSagaMiddleware from 'redux-saga';
-
-const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore();
 
