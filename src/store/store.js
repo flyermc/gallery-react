@@ -14,10 +14,10 @@ if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
 function configureStore() {
     const store = createStore(
         galleryReducer,
-        compose(
-            devTools,
+
+
             applyMiddleware(sagaMiddleware),
-        )
+
     );
     sagaMiddleware.run(imagesSaga);
     
