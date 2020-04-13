@@ -1,13 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { getImages } from '../services/galleryService';
-import { IMAGES_REQUESTED } from '../store/actions';
+import { IMAGES_REQUESTED, imagesFetched, imagesFetchFailed } from '../store/actions';
 
 function* fetchImages(action) {
     try {
        const images = yield call(getImages);
-       yield put({type: "IMAGES_FETCH_SUCCEEDED", images: images});
+       yield put(imagesFetched(images));
     } catch (e) {
-       yield put({type: "IMAGES_FETCH_FAILED", message: e.message});
+       yield put(imagesFetchFailed(e.message));
     }
  }
 
