@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { Image, ImageDetails } from '../components';
+import { currentImageSelector, imagesSelector } from '../selectors/imagesSelector';
 
 import { requestImages } from '../store/actions';
 
@@ -12,6 +14,7 @@ const ImageContainer = ({ currentImage }) => {
     let dispatch = useDispatch();
 
     dispatch(requestImages());
+    
     return (
         <Fragment>
             { !currentImage &&
@@ -24,16 +27,15 @@ const ImageContainer = ({ currentImage }) => {
             { !!currentImage && <ImageDetails /> }
         </Fragment>
     )
-}
+};
 
 ImageContainer.propTypes = {
     currentImage: PropTypes.string,
 }
 
-const mapStateToProps = state => {
-    return {
-        currentImage: state.currentImage,
-    }
-}
+const mapStateToProps = (state) => createStructuredSelector({
+    currentImage: currentImageSelector(state),
+    images: imagesSelector(state),
+});
 
 export default connect(mapStateToProps)(ImageContainer);
