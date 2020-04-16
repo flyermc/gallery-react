@@ -8,7 +8,7 @@ export const imagesSelector = createSelector(
     (images) => images,
 );
 
-export const currentImage = createSelector(
+export const currentImageSelector = createSelector(
     getImage,
     (image) => image,
 );
