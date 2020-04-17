@@ -20,7 +20,7 @@ const ImageContainer = ({ images, currentImage }) => {
               <Container>
               { 
                   images.map(({ photo_preview, uuid }) => (
-                    <Image imageSrc={photo_preview} key={uuid} />
+                    <Image imageSrc={photo_preview} id={uuid} />
                   ))
               }
               </Container>
