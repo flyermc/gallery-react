@@ -1,21 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeImage } from '../../store/actions';
 
-const ImageDetails = ({imageSrc}) => {
+export const ImageDetails = ({image}) => {
     const dispatch = useDispatch()
     return (
-        <img src={imageSrc} onClick={() => dispatch(closeImage())} alt='Loading...' />
+        <img src={image.photo} onClick={() => dispatch(closeImage())} alt='Loading...' />
     )
 }
 
 ImageDetails.propTypes = {
-    imageSrc: PropTypes.string.isRequired,
+    image: PropTypes.object.isRequired,
 }
-
-const mapStateToProps = state => {
-    return {imageSrc: state.currentImage}
-}
-
-export default connect(mapStateToProps)(ImageDetails);

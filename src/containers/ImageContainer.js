@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { Image, ImageDetails } from '../components';
-import { imagesSelector } from '../selectors/imagesSelector';
+import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
 
 import { requestImages } from '../store/actions';
 
@@ -20,12 +20,12 @@ const ImageContainer = ({ images, currentImage }) => {
               <Container>
               { 
                   images.map(({ photo_preview, uuid }) => (
-                    <Image imageSrc={photo_preview} id={uuid} />
+                    <Image imageSrc={photo_preview} id={uuid} key={uuid} />
                   ))
               }
               </Container>
             }
-            { !!currentImage && <ImageDetails /> }
+            { !!currentImage && <ImageDetails image={currentImage} /> }
         </Fragment>
     )
 };
@@ -35,11 +35,8 @@ ImageContainer.propTypes = {
     images: PropTypes.array,
 }
 
-ImageContainer.defaultProps = {
-    currentImage: null,
-}
-
 const mapStateToProps = createStructuredSelector({
+    currentImage: currentImageSelector,
     images: imagesSelector,
 });
 

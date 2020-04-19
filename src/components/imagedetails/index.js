@@ -1,1 +1,1 @@
-export { default as ImageDetails } from './ImageDetails.js';
+export { ImageDetails } from './ImageDetails.js';
