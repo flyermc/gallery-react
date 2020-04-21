@@ -4,6 +4,6 @@ export const ImageContainer = styled.div`
     height: 100%;
 `;
 
-export const Image = styled.img`
+export const StyledImage = styled.img`
     height: 50%;
 `;
