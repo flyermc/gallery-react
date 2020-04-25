@@ -16,16 +16,16 @@ const ImageContainer = ({ images, currentImage }) => {
     
     return (
         <Fragment>
-            { !currentImage && images &&
-              <Container>
-              { 
-                  images.map(({ photo_preview, uuid }) => (
-                    <Image imageSrc={photo_preview} id={uuid} key={uuid} />
-                  ))
-              }
-              </Container>
+        { !currentImage && images &&
+            <Container>
+            { 
+                images.map(({ photo_preview, uuid }) => (
+                <Image imageSrc={photo_preview} id={uuid} key={uuid} />
+                ))
             }
-            { !!currentImage && <ImageDetails image={currentImage} /> }
+            </Container>
+        }
+        { !!currentImage && <ImageDetails image={currentImage} /> }
         </Fragment>
     )
 };
