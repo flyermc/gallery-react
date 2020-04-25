@@ -7,7 +7,7 @@ export const StyledImage = styled.img`
     &:hover {
         -webkit-filter: none;
         filter: none;
-        transform: scale(1.1);
+        transform: scale(1.02);
     };
-
+    cursor: pointer;
 `;
