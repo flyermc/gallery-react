@@ -8,7 +8,7 @@ import { imagesSelector, currentImageSelector } from '../selectors/imagesSelecto
 
 import { requestImages } from '../store/actions';
 
-import { Container } from './styled';
+import { Container, StyledItem } from './styled';
 
 const ImageContainer = ({ images, currentImage }) => {
     let dispatch = useDispatch();
@@ -19,8 +19,10 @@ const ImageContainer = ({ images, currentImage }) => {
         { !currentImage && images &&
             <Container>
             { 
-                images.map(({ photo_preview, uuid }) => (
-                <Image imageSrc={photo_preview} id={uuid} key={uuid} />
+                images.map(({ photo_preview, uuid }, index) => (
+                <StyledItem number={index}>
+                    <Image imageSrc={photo_preview} id={uuid} key={uuid} />
+                </StyledItem>
                 ))
             }
             </Container>
