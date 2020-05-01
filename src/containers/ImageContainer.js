@@ -21,7 +21,7 @@ const ImageContainer = ({ images, currentImage }) => {
             { 
                 images.map(({ photo_preview, uuid }, index) => (
                 <StyledItem number={index}>
-                    <Image imageSrc={photo_preview} id={uuid} key={uuid} />
+                    <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
                 </StyledItem>
                 ))
             }

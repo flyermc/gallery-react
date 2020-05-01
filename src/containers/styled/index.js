@@ -16,17 +16,14 @@ export const StyledItem = styled.div`
     0: css`
       grid-column: 1/4;
       grid-row: 1/4;
-      text-indent: -140px;
     `,
     1: css`
       grid-column: 4/7;
       grid-row: 1/4;
-      text-indent: -140px;
     `,
     2: css`
       grid-column: 7/10;
       grid-row: 1/4;
-      text-indent: -140px;
     `,
     3: css`
       grid-column: 1/5;
