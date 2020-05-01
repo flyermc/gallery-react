@@ -1,4 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
 
 export const StyledImageContainer = styled.div`
     ${({width, height, number}) => width > height && number !== 4 && css`
@@ -8,12 +17,12 @@ export const StyledImageContainer = styled.div`
 
 export const StyledImage = styled.img`
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    transition: all .2s ease-in-out;
     filter: grayscale(100%);
+    animation: 0.5s ${fadeIn} ease-out;
     &:hover {
         -webkit-filter: none;
         filter: none;
-        transform: scale(1.02);
+        transform: scale(1.01);
     };
     cursor: pointer;
 `;
