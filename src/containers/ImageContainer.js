@@ -13,12 +13,12 @@ import { Container, StyledItem } from './styled';
 const ImageContainer = ({ images, currentImage }) => {
     let dispatch = useDispatch();
     images || dispatch(requestImages());
-    
+
     return (
         <Fragment>
-        { !currentImage && images &&
+        { images &&
             <Container>
-            { 
+            {
                 images.map(({ photo_preview, uuid }, index) => (
                 <StyledItem number={index}>
                     <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
