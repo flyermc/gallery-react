@@ -19,10 +19,12 @@ export const StyledImage = styled.img`
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
     animation: 0.5s ${fadeIn} ease-out;
+
     &:hover {
         -webkit-filter: none;
         filter: none;
         transform: scale(1.01);
+        box-shadow: inset 0 0 0 25px #53a7ea;
     };
     cursor: pointer;
 `;

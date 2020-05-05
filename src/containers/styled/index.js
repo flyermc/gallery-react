@@ -12,6 +12,8 @@ export const Container = styled.div`
 
 export const StyledItem = styled.div`
   overflow: hidden;
+  border-radius: 7px;
+
   ${({ number }) => ({
     0: css`
       grid-column: 1/4;
