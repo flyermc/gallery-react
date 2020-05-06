@@ -16,7 +16,7 @@ export const Countdown = () => {
     const [counter, setCounter] = useState(diff);
 
     useEffect(() => {
-        counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+        counter > 0 && setTimeout(() => setCounter(counter - 1000), 1000);
     }, [counter]);
 
     return (
