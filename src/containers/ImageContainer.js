@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Image, ImageDetails } from '../components';
+import { Image, ImageDetails, Countdown } from '../components';
 import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
 
 import { requestImages } from '../store/actions';
@@ -28,6 +28,7 @@ const ImageContainer = ({ images, currentImage }) => {
             </Container>
         }
         { !!currentImage && <ImageDetails image={currentImage} /> }
+        <Countdown />
         </Fragment>
     )
 };
