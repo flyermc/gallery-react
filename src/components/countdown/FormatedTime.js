@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 export const FormatedTime = ({miliseconds}) => {
@@ -12,12 +12,12 @@ export const FormatedTime = ({miliseconds}) => {
         return pad + time;
     }
     return (
-        <span>
-            {day} {day === 1 ? `day`: `days`}
-            {formatTime(hours)}:
-            {formatTime(minutes)}:
-            {formatTime(seconds)}
-        </span>
+        <Fragment>
+            <span>{day} {day === 1 ? `day`: `days`} </span>
+            <span>{formatTime(hours)}:</span>
+            <span>{formatTime(minutes)}:</span>
+            <span>{formatTime(seconds)}</span>
+        </Fragment>
     )
 }
 
