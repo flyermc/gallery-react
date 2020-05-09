@@ -28,3 +28,9 @@ export const StyledImage = styled.img`
     };
     cursor: pointer;
 `;
+
+export const FullScreenContainer = styled.div`
+    width: 1500px;
+    height: 1000px;
+    background: url(${({imageSrc}) => imageSrc}) no-repeat center center fixed;
+`;

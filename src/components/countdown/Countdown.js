@@ -4,6 +4,7 @@ import { StyledContainer } from './styled';
 import { FormatedTime } from './FormatedTime';
 
 const WEEK = 1000 * 60 * 60 * 24 * 7;
+const SIX_DAYS = 1000 * 60 * 60 * 24 * 6;
 
 export const Countdown = () => {
 
