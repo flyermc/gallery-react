@@ -22,7 +22,7 @@ const ImageContainer = ({ images, currentImage }) => {
     var resultDate = new Date();
     const now = new Date()
 
-    resultDate.setDate(now.getDate() + (WEEK + 2 - now.getDay()) % WEEK);
+    resultDate.setDate(now.getDate() + (WEEK + PUBLISH_DAY - now.getDay()) % WEEK);
     resultDate.setHours(PUBLISH_HOUR, 0, 0, 0);
 
     const [counter, setCounter] = useState(0);
@@ -41,20 +41,21 @@ const ImageContainer = ({ images, currentImage }) => {
 
     return (
         <Fragment>
-            { images ? WEEK - counter <= DAY
-            ? <FullScreen imageSrc={images[0].photo} />
-            : <Container>
-            {
-                images.map(({ photo_preview, uuid }, index) => (
-                <StyledItem number={index}>
-                    <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
-                </StyledItem>
-                ))
-            }
-            </Container>
+            { images
+            ? WEEK - counter <= DAY
+                ? <FullScreen imageSrc={images[0].photo} />
+                : <Container>
+                {
+                    images.map(({ photo_preview, uuid }, index) => (
+                    <StyledItem number={index}>
+                        <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
+                    </StyledItem>
+                    ))
+                }
+                </Container>
             : null}
         { !!currentImage && <ImageDetails image={currentImage} /> }
-        <Countdown />
+        <Countdown counter={counter} />
         </Fragment>
     )
 };
