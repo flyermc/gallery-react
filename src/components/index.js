@@ -1,3 +1,3 @@
 export { Image, FullScreen } from './image';
-export { ImageDetails } from './imagedetails';
+export { ImageDetails, Like } from './imagedetails';
 export { Countdown } from './countdown';

@@ -26,3 +26,8 @@ export const StyledImage = styled.img`
     }
     cursor: pointer;
 `;
+
+export const StyledLike = styled.div`
+    position: absolute;
+
+`;

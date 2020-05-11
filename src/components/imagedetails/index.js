@@ -1,1 +1,2 @@
-export { ImageDetails } from './ImageDetails.js';
+export { ImageDetails } from './ImageDetails';
+export { Like } from './Like';
