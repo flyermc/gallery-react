@@ -29,5 +29,6 @@ export const StyledImage = styled.img`
 
 export const StyledLike = styled.div`
     position: absolute;
-
+    bottom: 10px;
+    left: 50%;
 `;

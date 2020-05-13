@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="85px" height="69px" viewBox="0 0 85 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Empty heart</title>
+    <desc>Empty heart for flyer</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M35.3804653,62.9515331 L67.3804653,62.9515331 L67.3804653,21.9515331 C67.3804653,13.1149771 60.2170213,5.95153314 51.3804653,5.95153314 C42.5439093,5.95153314 35.3804653,13.1149771 35.3804653,21.9515331 L35.3804653,62.9515331 Z" id="Rectangle" stroke="#000000" stroke-width="3" fill="#FFFFFF" transform="translate(51.380465, 34.451533) rotate(45.000000) translate(-51.380465, -34.451533) "></path>
+        <path d="M17.5875721,63.0875721 L49.5875721,63.0875721 L49.5875721,22.0875721 C49.5875721,13.2510161 42.4241281,6.08757211 33.5875721,6.08757211 C24.7510161,6.08757211 17.5875721,13.2510161 17.5875721,22.0875721 L17.5875721,63.0875721 Z" id="Rectangle" stroke="#000000" stroke-width="3" fill="#FFFFFF" transform="translate(33.587572, 34.587572) rotate(-45.000000) translate(-33.587572, -34.587572) "></path>
+    </g>
+</svg>
