@@ -5,12 +5,12 @@ import FilledHeart from '../../icons/filled-heart.svg';
 
 import { StyledLikeContainer, StyledLike } from './styled';
 
-export const Like = ({ref}) => {
+export const Like = () => {
     const [liked, setLiked] = useState(false);
 
     return (
         <StyledLikeContainer>
-            <StyledLike ref={ref} src={liked ? FilledHeart: EmptyHeart } alt="Empty heart" empty={!liked} onClick={() => setLiked(!liked)} />
+            <StyledLike src={liked ? FilledHeart: EmptyHeart } alt="Empty heart" empty={!liked} onClick={() => setLiked(!liked)} />
         </StyledLikeContainer>
     )
 }
