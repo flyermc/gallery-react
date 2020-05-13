@@ -1,5 +1,6 @@
 export const OPEN_IMAGE = 'OPEN_IMAGE';
 export const CLOSE_IMAGE = 'CLOSE_IMAGE';
+export const LIKE_FETCH = 'LIKE_FETCH';
 export const LOAD_IMAGES = 'LOAD_IMAGES';
 export const IMAGES_REQUESTED = 'IMAGES_REQUESTED';
 export const IMAGES_FETCH_SUCCEEDED = 'IMAGES_FETCH_SUCCEEDED';
@@ -15,6 +16,10 @@ export function openImage(data) {
 
 export function closeImage() {
     return { type: CLOSE_IMAGE }
+}
+
+export function fetchLike(data) {
+    return { type: LIKE_FETCH, data }
 }
 
 export function requestImages() {

@@ -8,8 +8,8 @@ import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
 import { Like } from './Like';
 import { ImageContainer, StyledImage } from './styled';
 
-export const ImageDetails = ({image}) => {
-    const dispatch = useDispatch()
+export const ImageDetails = ({ image }) => {
+    const dispatch = useDispatch();
     const likeRef = useRef(null);
 
     useClickOutsideHook(likeRef, () => {
@@ -22,11 +22,10 @@ export const ImageDetails = ({image}) => {
             <div ref={likeRef}>
                 <Like />
             </div>
-
         </ImageContainer>
-    )
-}
+    );
+};
 
 ImageDetails.propTypes = {
     image: PropTypes.object.isRequired,
-}
+};

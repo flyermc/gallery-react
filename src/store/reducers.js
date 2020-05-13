@@ -1,4 +1,4 @@
-import { OPEN_IMAGE, CLOSE_IMAGE, IMAGES_FETCH_SUCCEEDED } from './actions';
+import { OPEN_IMAGE, CLOSE_IMAGE, IMAGES_FETCH_SUCCEEDED, LIKE_FETCH } from './actions';
 
 const initialState = {
     currentImage: null,
@@ -13,6 +13,10 @@ function galleryReducer(state = initialState, action) {
     case CLOSE_IMAGE:
         return {
             ...state, currentImage: null
+        }
+    case LIKE_FETCH:
+        return {
+            ...state, like: action.data
         }
     case IMAGES_FETCH_SUCCEEDED:
         return {
