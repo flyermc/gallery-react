@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { StyledLike } from './styled';
+import EmptyHeart from '../../icons/empty-heart.svg';
+import FilledHeart from '../../icons/filled-heart.svg';
+
+import { StyledLikeContainer, StyledLike } from './styled';
 
 export const Like = () => {
     return (
-        <StyledLike>
-            Like or not?
-        </StyledLike>
+        <StyledLikeContainer>
+            <StyledLike src={EmptyHeart} alt="Empty heart" empty={true} />
+        </StyledLikeContainer>
     )
 }

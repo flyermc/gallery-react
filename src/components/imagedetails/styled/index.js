@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const pulse = keyframes`
+	0% {
+		transform: scale(1);
+	}
+
+	60% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+`;
 
 export const ImageContainer = styled.div`
     display: block; /* Hidden by default */
@@ -22,13 +36,26 @@ export const StyledImage = styled.img`
     max-height: 700px;
     transition: all 2s ease-in-out;
     &:hover {
-        transform: scale(1.005) translate(-50%, -50%);
+        transform: scale(1.0005) translate(-50%, -50%);
     }
     cursor: pointer;
 `;
 
-export const StyledLike = styled.div`
+export const StyledLikeContainer = styled.div`
     position: absolute;
     bottom: 10px;
     left: 50%;
+`;
+
+export const StyledLike = styled.img`
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    filter: brightness(0.5);
+    animation: ${({empty}) => empty ? pulse : '' } 2s infinite;
+    &:hover {
+        animation: pulse 2s infinite;
+        filter: brightness(1);
+        transform: scale(1.3);
+    }
 `;
