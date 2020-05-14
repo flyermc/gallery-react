@@ -20,7 +20,7 @@ export const ImageDetails = memo(({ image }) => {
         <ImageContainer>
             <StyledImage src={image.photo} alt='Loading...' />
             <div ref={likeRef}>
-                <Like />
+                <Like imageUuid={image.uuid} />
             </div>
         </ImageContainer>
     );

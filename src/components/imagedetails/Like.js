@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import EmptyHeart from '../../icons/empty-heart.svg';
@@ -7,13 +8,13 @@ import FilledHeart from '../../icons/filled-heart.svg';
 import { StyledLikeContainer, StyledLike } from './styled';
 import { fetchLike } from '../../store/actions';
 
-export const Like = () => {
+export const Like = ({imageUuid}) => {
     const dispatch = useDispatch();
 
     const [liked, setLiked] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchLike({image: "hello", src: "asdfasd"}));
+        dispatch(fetchLike(imageUuid));
     }, [liked]);
 
     return (
@@ -27,3 +28,7 @@ export const Like = () => {
         </StyledLikeContainer>
     );
 };
+
+Like.propTypes = {
+    imageUuid: PropTypes.string.isRequired,
+}
