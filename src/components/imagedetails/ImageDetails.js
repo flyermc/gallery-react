@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -8,7 +8,7 @@ import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
 import { Like } from './Like';
 import { ImageContainer, StyledImage } from './styled';
 
-export const ImageDetails = ({ image }) => {
+export const ImageDetails = memo(({ image }) => {
     const dispatch = useDispatch();
     const likeRef = useRef(null);
 
@@ -24,7 +24,7 @@ export const ImageDetails = ({ image }) => {
             </div>
         </ImageContainer>
     );
-};
+});
 
 ImageDetails.propTypes = {
     image: PropTypes.object.isRequired,
