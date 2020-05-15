@@ -12,7 +12,7 @@ export const FormatedTime = ({miliseconds}) => {
     }
     return (
         <Fragment>
-            <span>{day} {day === 1 ? `day`: `days`} </span>
+            <span>{day !== 0? day: ''} {day !== 0 ? day === 1 ? `day`: `days`: ''} </span>
             <span>{formatTime(hours)}:</span>
             <span>{formatTime(minutes)}:</span>
             <span>{formatTime(seconds)}</span>
