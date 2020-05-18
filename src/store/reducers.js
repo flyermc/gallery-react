@@ -2,7 +2,7 @@ import {
     OPEN_IMAGE,
     CLOSE_IMAGE,
     IMAGES_FETCH_SUCCEEDED,
-    LIKE_FETCH,
+    LIKE_FETCH_SUCCEEDED,
 } from './actions';
 import { List } from 'immutable';
 
@@ -24,7 +24,7 @@ function galleryReducer(state = initialState, action) {
                 ...state,
                 currentImage: null,
             };
-        case LIKE_FETCH:
+        case LIKE_FETCH_SUCCEEDED:
             return {
                 ...state,
                 likes: state.likes ? state.likes.push(action.data) : new List([action.data]),

@@ -6,29 +6,29 @@ import EmptyHeart from '../../icons/empty-heart.svg';
 import FilledHeart from '../../icons/filled-heart.svg';
 
 import { StyledLikeContainer, StyledLike } from './styled';
-import { fetchLike } from '../../store/actions';
+import { requestLike } from '../../store/actions';
 
-export const Like = memo(({imageUuid}) => {
-    const dispatch = useDispatch();
+export const Like = memo(({ imageUuid }) => {
+  const dispatch = useDispatch();
 
-    const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(false);
 
-    useEffect(() => {
-        dispatch(fetchLike(imageUuid));
-    }, [liked]);
+  useEffect(() => {
+    dispatch(requestLike(imageUuid));
+  }, [liked]);
 
-    return (
-        <StyledLikeContainer>
-            <StyledLike
-                src={liked ? FilledHeart : EmptyHeart}
-                alt='Empty heart'
-                empty={!liked}
-                onClick={() => setLiked(!liked)}
-            />
-        </StyledLikeContainer>
-    );
+  return (
+    <StyledLikeContainer>
+      <StyledLike
+        src={liked ? FilledHeart : EmptyHeart}
+        alt="Empty heart"
+        empty={!liked}
+        onClick={() => setLiked(!liked)}
+      />
+    </StyledLikeContainer>
+  );
 });
 
 Like.propTypes = {
-    imageUuid: PropTypes.string.isRequired,
-}
+  imageUuid: PropTypes.string.isRequired,
+};
