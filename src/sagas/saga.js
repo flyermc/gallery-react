@@ -17,10 +17,14 @@ function* fetchImages() {
   }
 }
 
-function* fetchLike(uuid) {
+function* fetchLike(data) {
   try {
-    const like = yield call(getLike, uuid);
-    yield put(likeFetched(like));
+    const response = yield call(getLike, data.uuid);
+    const payload = {
+      image: data.uuid,
+      like: response.status === 200,
+    };
+    yield put(likeFetched(payload));
   } catch (e) {
     console.log('Cannot get like for image: ' + e.message);
   }

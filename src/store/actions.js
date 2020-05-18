@@ -21,7 +21,7 @@ export function closeImage() {
 
 export const requestLike = (uuid) => ({ type: LIKE_REQUESTED, uuid });
 
-export const likeFetched = (like) => ({ type: LIKE_FETCH_SUCCEEDED, like });
+export const likeFetched = (data) => ({ type: LIKE_FETCH_SUCCEEDED, data });
 
 export function fetchLike(data) {
   return { type: LIKE_FETCH_SUCCEEDED, data };
