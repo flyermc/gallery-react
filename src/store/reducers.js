@@ -3,7 +3,7 @@ import { List } from 'immutable';
 
 const initialState = {
   currentImage: null,
-  likes: new List(),
+  likes: {},
   images: new List(),
 };
 
@@ -22,7 +22,7 @@ function galleryReducer(state = initialState, action) {
     case LIKE_FETCH_SUCCEEDED:
       return {
         ...state,
-        likes: { [action.data.image]: action.data.like },
+        likes: Object.assign(state.likes || {}, { [action.data.image]: action.data.like }),
       };
     case IMAGES_FETCH_SUCCEEDED:
       return {

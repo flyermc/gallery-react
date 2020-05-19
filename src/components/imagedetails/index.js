@@ -1,2 +1,2 @@
 export { ImageDetails } from './ImageDetails';
-export { Like } from './Like';
+export { default as Like } from './Like';
