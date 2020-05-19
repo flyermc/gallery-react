@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import EmptyHeart from '../../icons/empty-heart.svg';
@@ -8,12 +8,14 @@ import FilledHeart from '../../icons/filled-heart.svg';
 
 import { StyledLikeContainer, StyledLike } from './styled';
 import { requestLike } from '../../store/actions';
-import { getImageLikeSelector } from '../../selectors/imagesSelector';
+import { currentImageSelector, getImageLikeSelector } from '../../selectors/imagesSelector';
 
-export const Like = memo(({ imageUuid, liked }) => {
+export const Like = memo(({ imageUuid, liked, likeFrom }) => {
   const dispatch = useDispatch();
 
   liked || dispatch(requestLike(imageUuid));
+
+  const likedHere = useSelector(currentImageSelector);
 
   const [like, setLike] = useState(liked);
 

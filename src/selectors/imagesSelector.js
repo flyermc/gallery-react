@@ -23,5 +23,5 @@ export const currentImageSelector = createSelector(
 export const getImageLikeSelector = createSelector(
   getLikesSelector,
   getCurrentImage,
-  (likes, uuid) => likes.get(uuid),
+  (likes, uuid) => likes && uuid && likes[uuid],
 );

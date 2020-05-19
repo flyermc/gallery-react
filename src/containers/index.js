@@ -1,1 +1,1 @@
-export { default as ImageContainer } from './ImageContainer';
+export { ImageContainer } from './ImageContainer';

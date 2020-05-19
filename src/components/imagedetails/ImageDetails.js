@@ -8,7 +8,7 @@ import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
 import { Like } from './Like';
 import { ImageContainer, StyledImage } from './styled';
 
-export const ImageDetails = memo(({ image }) => {
+export const ImageDetails = memo(({ image, like }) => {
     const dispatch = useDispatch();
     const likeRef = useRef(null);
 
@@ -20,7 +20,7 @@ export const ImageDetails = memo(({ image }) => {
         <ImageContainer>
             <StyledImage src={image.photo} alt='Loading...' />
             <div ref={likeRef}>
-                <Like imageUuid={image.uuid} />
+                <Like imageUuid={image.uuid} likeFrom={like} />
             </div>
         </ImageContainer>
     );
