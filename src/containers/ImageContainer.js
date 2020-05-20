@@ -14,7 +14,7 @@ const PUBLISH_DAY = 6;
 const PUBLISH_HOUR = 10;
 
 export const ImageContainer = () => {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const images = useSelector(imagesSelector);
   images || dispatch(requestImages());

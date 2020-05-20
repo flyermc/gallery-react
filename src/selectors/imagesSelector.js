@@ -1,13 +1,9 @@
 import { createSelector } from 'reselect';
 
-export const getImages = (state) => {
-  return state.images;
-};
-export const getCurrentImage = (state) => {
-  return state.currentImage;
-};
-export const getLikesSelector = (state) => {
-  console.log(state);
+export const getImages = (state) => state.images;
+export const getCurrentImage = (state) => state.currentImage;
+export const getLikes = (state) => {
+  console.log(state.likes);
   return state.likes;
 };
 
@@ -20,8 +16,12 @@ export const currentImageSelector = createSelector(
     images && currentImage && images.find((image) => image.uuid === currentImage.id),
 );
 
-export const getImageLikeSelector = createSelector(
-  getLikesSelector,
+export const likedImageSelector = createSelector(
+  getLikes,
   getCurrentImage,
-  (likes, uuid) => likes && uuid && likes[uuid],
+  (likes, currentImage) => {
+    if (likes && currentImage) {
+      return likes[currentImage.id]
+    }
+  },
 );

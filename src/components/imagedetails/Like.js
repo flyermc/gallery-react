@@ -8,14 +8,13 @@ import FilledHeart from '../../icons/filled-heart.svg';
 
 import { StyledLikeContainer, StyledLike } from './styled';
 import { requestLike } from '../../store/actions';
-import { currentImageSelector, getImageLikeSelector } from '../../selectors/imagesSelector';
+import { likedImageSelector } from '../../selectors/imagesSelector';
 
-export const Like = memo(({ imageUuid, liked, likeFrom }) => {
+export const Like = memo(({ imageUuid, liked }) => {
   const dispatch = useDispatch();
 
-  liked || dispatch(requestLike(imageUuid));
-
-  const likedHere = useSelector(currentImageSelector);
+  const likedHere = useSelector(likedImageSelector);
+  likedHere || dispatch(requestLike(imageUuid));
 
   const [like, setLike] = useState(liked);
 
@@ -25,23 +24,19 @@ export const Like = memo(({ imageUuid, liked, likeFrom }) => {
 
   return (
     <StyledLikeContainer>
-      <StyledLike
-        src={liked ? FilledHeart : EmptyHeart}
-        alt="Empty heart"
-        empty={!liked}
-        onClick={() => setLike(!like)}
-      />
+      {likedHere !== undefined && (
+        <StyledLike
+          src={likedHere ? FilledHeart : EmptyHeart}
+          alt="Empty heart"
+          empty={!liked}
+          onClick={() => setLike(!like)}
+        />
+      )}
     </StyledLikeContainer>
   );
-});
-
-const mapStateToProps = createStructuredSelector({
-  liked: getImageLikeSelector,
 });
 
 Like.propTypes = {
   imageUuid: PropTypes.string.isRequired,
   liked: PropTypes.bool,
 };
-
-export default connect(mapStateToProps)(Like);
