@@ -1,11 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getImages, getLike } from '../services/galleryService';
+import { getImages, getLike, setLike } from '../services/galleryService';
 import {
   IMAGES_REQUESTED,
   imagesFetched,
   likeFetched,
   imagesFetchFailed,
   LIKE_REQUESTED,
+  LIKE_POSTED,
 } from '../store/actions';
 
 function* fetchImages() {
@@ -20,19 +21,29 @@ function* fetchImages() {
 function* fetchLike(data) {
   try {
     const response = yield call(getLike, data.uuid);
-    const payload = {
+    const storePayload = {
       image: data.uuid,
       like: response.status === 200,
     };
-    yield put(likeFetched(payload));
+    yield put(likeFetched(storePayload));
   } catch (e) {
     console.log('Cannot get like for image: ' + e.message);
+  }
+}
+
+function* changeLike(data) {
+  try {
+    const response = yield call(setLike, data.uuid);
+
+  } catch (e) {
+    console.log('Cannot set like for image: ' + e.message);
   }
 }
 
 function* imagesSaga() {
   yield takeLatest(IMAGES_REQUESTED, fetchImages);
   yield takeLatest(LIKE_REQUESTED, fetchLike);
+  yield takeLatest(LIKE_POSTED, changeLike);
 }
 
 export default imagesSaga;
