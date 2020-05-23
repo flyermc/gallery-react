@@ -1,4 +1,11 @@
-import { OPEN_IMAGE, CLOSE_IMAGE, IMAGES_FETCH_SUCCEEDED, LIKE_FETCH_SUCCEEDED } from './actions';
+import {
+  OPEN_IMAGE,
+  CLOSE_IMAGE,
+  IMAGES_FETCH_SUCCEEDED,
+  LIKE_FETCH_SUCCEEDED,
+  LIKE_SET_SUCCEEDED,
+  LIKE_DELETE_SUCCEEDED,
+} from './actions';
 import { List } from 'immutable';
 
 const initialState = {
@@ -23,7 +30,17 @@ function galleryReducer(state = initialState, action) {
     case LIKE_FETCH_SUCCEEDED:
       return {
         ...state,
-        likes: Object.assign(state.likes || {}, { [action.data.image]: action.data.like }),
+        likes: { [action.data.image]: action.data.like },
+      };
+    case LIKE_SET_SUCCEEDED:
+      return {
+        ...state,
+        likes: { [state['currentImage'].id]: action.uuid },
+      };
+    case LIKE_DELETE_SUCCEEDED:
+      return {
+        ...state,
+        likes: null,
       };
     case IMAGES_FETCH_SUCCEEDED:
       return {

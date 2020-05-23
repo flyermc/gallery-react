@@ -11,7 +11,6 @@ import { likedImageSelector } from '../../selectors/imagesSelector';
 
 export const Like = memo(({ imageUuid }) => {
   const dispatch = useDispatch();
-  dispatch(requestLike(imageUuid));
 
   const liked = useSelector(likedImageSelector);
 
@@ -22,6 +21,10 @@ export const Like = memo(({ imageUuid }) => {
       dispatch(setLike(imageUuid));
     }
   };
+
+  useEffect(() => {
+    dispatch(requestLike(imageUuid));
+  }, []);
 
   useEffect(() => {
     console.log(`Like changed to ${liked}`);

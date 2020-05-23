@@ -36,8 +36,8 @@ function* fetchLike(data) {
 function* setLike(data) {
   try {
     const response = yield call(setLikeRequest, data.uuid);
-    if (response.status === 201) {
-      yield put(setLikeSuccess);
+    if (response.status === 201 || response.status === 304) {
+      yield put(setLikeSuccess(data.uuid));
     }
   } catch (e) {
     console.log('Cannot set like for image: ' + e.message);
