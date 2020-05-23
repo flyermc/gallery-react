@@ -3,7 +3,6 @@ import { createSelector } from 'reselect';
 export const getImages = (state) => state.images;
 export const getCurrentImage = (state) => state.currentImage;
 export const getLikes = (state) => {
-  console.log(state.likes);
   return state.likes;
 };
 

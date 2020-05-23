@@ -1,35 +1,41 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
 
 import EmptyHeart from '../../icons/empty-heart.svg';
 import FilledHeart from '../../icons/filled-heart.svg';
 
 import { StyledLikeContainer, StyledLike } from './styled';
-import { requestLike } from '../../store/actions';
+import { requestLike, setLike, deleteLike } from '../../store/actions';
 import { likedImageSelector } from '../../selectors/imagesSelector';
 
-export const Like = memo(({ imageUuid, liked }) => {
+export const Like = memo(({ imageUuid }) => {
   const dispatch = useDispatch();
+  dispatch(requestLike(imageUuid));
 
-  const likedHere = useSelector(likedImageSelector);
-  likedHere || dispatch(requestLike(imageUuid));
+  const liked = useSelector(likedImageSelector);
 
-  const [like, setLike] = useState(liked);
+  const changeLike = (liked) => {
+    if (liked) {
+      dispatch(deleteLike(imageUuid));
+    } else {
+      dispatch(setLike(imageUuid));
+    }
+  };
 
   useEffect(() => {
+    console.log(`Like changed to ${liked}`);
     //dispatch(requestLike(imageUuid));
   }, [liked]);
 
   return (
     <StyledLikeContainer>
-      {likedHere !== undefined && (
+      {liked !== undefined && (
         <StyledLike
-          src={likedHere ? FilledHeart : EmptyHeart}
-          alt="Empty heart"
+          src={liked ? FilledHeart : EmptyHeart}
+          alt="Heart"
           empty={!liked}
-          onClick={() => setLike(!like)}
+          onClick={() => changeLike(liked)}
         />
       )}
     </StyledLikeContainer>
