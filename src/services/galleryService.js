@@ -12,12 +12,12 @@ const likeBody = (method, data) => {
   };
 };
 
-export const getImages = () => fetch(IMAGES_URL).then((data) => data.json());
+export const getImagesRequest = () => fetch(IMAGES_URL).then((data) => data.json());
 
-export const getLike = (uuid) => fetch(LIKE_URL + uuid).then((data) => data);
+export const getLikeRequest = (uuid) => fetch(LIKE_URL + uuid).then((data) => data);
 
-export const setLike = (uuid) =>
+export const setLikeRequest = (uuid) =>
   fetch(LIKE_URL, likeBody('POST', { photo: uuid })).then((data) => data);
 
-export const deleteLike = (uuid) =>
+export const deleteLikeRequest = (uuid) =>
   fetch(LIKE_URL, likeBody('DELETE', { photo: uuid })).then((data) => data);
