@@ -18,6 +18,7 @@ function galleryReducer(state = initialState, action) {
       return {
         ...state,
         currentImage: null,
+        likes: null,
       };
     case LIKE_FETCH_SUCCEEDED:
       return {
