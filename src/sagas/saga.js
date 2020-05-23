@@ -1,17 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getImages, getLike, setLike } from '../services/galleryService';
+import { getImagesRequest, getLikeRequest, setLikeRequest, deleteLikeRequest } from '../services/galleryService';
 import {
   IMAGES_REQUESTED,
   imagesFetched,
   likeFetched,
+  setLikeSuccess,
   imagesFetchFailed,
   LIKE_REQUESTED,
-  LIKE_POSTED,
+  LIKE_SET_REQUEST,
+  LIKE_DELETE_REQUEST,
 } from '../store/actions';
 
 function* fetchImages() {
   try {
-    const images = yield call(getImages);
+    const images = yield call(getImagesRequest);
     yield put(imagesFetched(images));
   } catch (e) {
     yield put(imagesFetchFailed(e.message));
@@ -20,7 +22,7 @@ function* fetchImages() {
 
 function* fetchLike(data) {
   try {
-    const response = yield call(getLike, data.uuid);
+    const response = yield call(getLikeRequest, data.uuid);
     const storePayload = {
       image: data.uuid,
       like: response.status === 200,
@@ -31,19 +33,26 @@ function* fetchLike(data) {
   }
 }
 
-function* changeLike(data) {
+function* setLike(data) {
   try {
-    const response = yield call(setLike, data.uuid);
-
+    const response = yield call(setLikeRequest, data.uuid);
+    if (response.status === 201) {
+      yield put(setLikeSuccess);
+    }
   } catch (e) {
     console.log('Cannot set like for image: ' + e.message);
   }
 }
 
+function* deleteLike(data) {
+
+}
+
 function* imagesSaga() {
   yield takeLatest(IMAGES_REQUESTED, fetchImages);
   yield takeLatest(LIKE_REQUESTED, fetchLike);
-  yield takeLatest(LIKE_POSTED, changeLike);
+  yield takeLatest(LIKE_SET_REQUEST, setLike);
+  yield takeLatest(LIKE_DELETE_REQUEST, deleteLike);
 }
 
 export default imagesSaga;
