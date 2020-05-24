@@ -22,7 +22,7 @@ export const closeImage = () => ({ type: CLOSE_IMAGE });
 export const requestLike = (uuid) => ({ type: LIKE_REQUESTED, uuid });
 export const likeFetched = (data) => ({ type: LIKE_FETCH_SUCCEEDED, data });
 export const setLike = (uuid) => ({ type: LIKE_SET_REQUEST, uuid });
-export const setLikeSuccess = (uuid) => ({ type: LIKE_SET_SUCCEEDED, uuid });
+export const setLikeSuccess = () => ({ type: LIKE_SET_SUCCEEDED });
 export const deleteLike = (uuid) => ({ type: LIKE_DELETE_REQUEST, uuid });
 export const deleteLikeSuccess = () => ({ type: LIKE_DELETE_SUCCEEDED });
 export const fetchLike = (data) => ({ type: LIKE_FETCH_SUCCEEDED, data });
