@@ -44,7 +44,7 @@ export const ImageContainer = () => {
   return (
     <Fragment>
       {images ? (
-        WEEK - counter >= DAY ? (
+        WEEK - counter <= DAY ? (
           <FullScreen imageSrc={images[0].photo} />
         ) : (
           <Container>
