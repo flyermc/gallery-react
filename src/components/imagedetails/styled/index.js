@@ -33,7 +33,8 @@ export const StyledImage = styled.img`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 700px;
+    height: 90vh;
+    widht: auto;
     transition: all 2s ease-in-out;
     &:hover {
         transform: scale(1.0005) translate(-50%, -50%);
