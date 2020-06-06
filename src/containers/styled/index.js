@@ -12,30 +12,34 @@ export const Container = styled.div`
 
 export const StyledItem = styled.div`
   overflow: hidden;
-  border-radius: 7px;
 
   ${({ number }) => ({
     0: css`
       grid-column: 1/4;
       grid-row: 1/4;
+      border-radius: 7px;
     `,
     1: css`
       grid-column: 4/7;
       grid-row: 1/4;
+      border-radius: 7px;
     `,
     2: css`
       grid-column: 7/10;
       grid-row: 1/4;
+      border-radius: 7px;
     `,
     3: css`
       grid-column: 1/5;
       grid-row: 4/7;
       text-align: left;
+      border-radius: 7px;
     `,
     4: css`
       grid-column: 5/10;
       grid-row: 4/7;
       text-align: right;
+      border-radius: 7px;
     `,
     })[number]
   };
