@@ -30,7 +30,10 @@ export const StyledImage = styled.img`
 `;
 
 export const FullScreenContainer = styled.div`
-    width: 1500px;
-    height: 1000px;
+    width: 100vw;
+    height: 100vh;
     background: url(${({imageSrc}) => imageSrc}) no-repeat center center fixed;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 `;
