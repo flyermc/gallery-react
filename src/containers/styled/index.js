@@ -30,10 +30,12 @@ export const StyledItem = styled.div`
     3: css`
       grid-column: 1/5;
       grid-row: 4/7;
+      text-align: left;
     `,
     4: css`
       grid-column: 5/10;
       grid-row: 4/7;
+      text-align: right;
     `,
     })[number]
   };

@@ -10,7 +10,7 @@ import { Container, StyledItem } from './styled';
 
 const DAY = 1000 * 60 * 60 * 24;
 const WEEK = DAY * 7;
-const PUBLISH_DAY = 6;
+const PUBLISH_DAY = 7;
 const PUBLISH_HOUR = 10;
 
 export const ImageContainer = () => {
