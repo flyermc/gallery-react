@@ -2,6 +2,7 @@ import {
   OPEN_IMAGE,
   CLOSE_IMAGE,
   IMAGES_FETCH_SUCCEEDED,
+  HOT_IMAGE_FETCH_SUCCEEDED,
   LIKE_FETCH_SUCCEEDED,
   LIKE_SET_SUCCEEDED,
   LIKE_DELETE_SUCCEEDED,
@@ -47,6 +48,11 @@ function galleryReducer(state = initialState, action) {
         ...state,
         images: action.images,
       };
+    case HOT_IMAGE_FETCH_SUCCEEDED:
+      return {
+        ...state,
+        hotImage: action.image,
+      }
     default:
       return state;
   }

@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 export const getImages = (state) => state.images;
 export const getCurrentImage = (state) => state.currentImage;
+export const getHotImageSelector = (state) => state.hotImage;
 export const getLikes = (state) => {
   return state.likes;
 };

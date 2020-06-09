@@ -10,7 +10,7 @@ import { Container, StyledItem } from './styled';
 
 const DAY = 1000 * 60 * 60 * 24;
 const WEEK = DAY * 7;
-const PUBLISH_DAY = 6;
+const PUBLISH_DAY = 2;
 const PUBLISH_HOUR = 10;
 
 export const ImageContainer = () => {
@@ -43,9 +43,9 @@ export const ImageContainer = () => {
 
   return (
     <Fragment>
-      {images ? (
+      {images && counter ? (
         WEEK - counter <= DAY ? (
-          <FullScreen imageSrc={images[0].photo} />
+          <FullScreen />
         ) : (
           <Container>
             {images.map(({ photo_preview, uuid }, index) => (

@@ -1,5 +1,6 @@
 const HOST = 'http://localhost:8010/';
 const IMAGES_URL = HOST + 'images/';
+const HOT_IMAGE_URL = HOST + 'hot/';
 const LIKE_URL = HOST + 'like/';
 
 const likeBody = (method, data) => {
@@ -13,6 +14,8 @@ const likeBody = (method, data) => {
 };
 
 export const getImagesRequest = () => fetch(IMAGES_URL).then((data) => data.json());
+
+export const getHotImageRequest = () => fetch(HOT_IMAGE_URL).then((data) => data.json());
 
 export const getLikeRequest = (uuid) => fetch(LIKE_URL + uuid).then((data) => data);
 

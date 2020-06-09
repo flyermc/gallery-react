@@ -1,9 +1,28 @@
 import React from 'react';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 
-import { FullScreenContainer } from './styled';
+import {
+  getHotImageSelector
+} from '../../selectors/imagesSelector';
 
-export const FullScreen = ({imageSrc}) => {
+import {
+  requestHotImage
+} from '../../store/actions';
+
+import {
+  FullScreenContainer
+} from './styled';
+
+export const FullScreen = () => {
+    const dispatch = useDispatch();
+    const hotImage = useSelector(getHotImageSelector);
+    dispatch(requestHotImage());
     return (
-        <FullScreenContainer imageSrc={imageSrc} />
-    )
-}
+      <>
+        { hotImage && <FullScreenContainer imageSrc = {hotImage.photo} /> }
+      </>
+    );
+    }
