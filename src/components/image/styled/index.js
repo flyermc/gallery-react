@@ -10,7 +10,9 @@ const fadeIn = keyframes`
 `;
 
 export const StyledImageContainer = styled.div`
-    ${({width, height, number}) => width > height && number !== 4 && css`
+    height: 100%;
+    width: 100%;
+    ${({width, height, number}) => width > height && css`
         text-indent: -140px;
     ` }
 `;

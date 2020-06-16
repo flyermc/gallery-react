@@ -17,7 +17,7 @@ export const Image = ({ imageSrc, id, number }) => {
                 ref={imgEl}
                 onLoad={() => {
                         setHeight(imgEl.current.naturalHeight);
-                        setWidth(imgEl.current.naturalWidth);
+                        setWidth(imgEl.current.naturalWidht);
                         }
                     }
                 height={height}
