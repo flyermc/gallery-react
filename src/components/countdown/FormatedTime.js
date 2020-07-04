@@ -12,7 +12,7 @@ export const FormatedTime = ({ miliseconds }) => {
   };
   return (
     <Fragment>
-      <span>{day !== 0 && day > 5 ? `Catalog return in...` : `New image in...`} </span>
+      <span>{day !== 0 && day > 5 ? `Back to gallery in...` : `New photo in...`} </span>
       <span>
         {day !== 0 && day <= 5 ? day : ''} {day !== 0 && day <= 5 ? (day === 1 ? `day` : `days`) : ''}{' '}
       </span>
