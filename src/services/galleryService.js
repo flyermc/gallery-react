@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:8010/';
+const HOST = 'http://18.158.181.102:8010/';
 const IMAGES_URL = HOST + 'images/';
 const HOT_IMAGE_URL = HOST + 'hot/';
 const LIKE_URL = HOST + 'like/';
