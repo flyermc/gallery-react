@@ -1,4 +1,5 @@
-const HOST = 'http://18.158.181.102:8010/';
+const IP_ADDRESS = process.env.REMOTE_IP || '18.158.181.102';
+const HOST = `http://${IP_ADDRESS}:8010/`;
 const IMAGES_URL = HOST + 'images/';
 const HOT_IMAGE_URL = HOST + 'hot/';
 const LIKE_URL = HOST + 'like/';
