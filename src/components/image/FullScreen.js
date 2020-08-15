@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getHotImageSelector } from '../../selectors/imagesSelector';
 
 import { requestHotImage } from '../../store/actions';
-import { Like } from './Like';
+import { Like } from '../imagedetails/Like';
 
 import { FullScreenContainer } from './styled';
 
 export const FullScreen = () => {
   const dispatch = useDispatch();
   const hotImage = useSelector(getHotImageSelector);
-  dispatch(requestHotImage());
+  useEffect(() => {
+    dispatch(requestHotImage());
+  }, [])
+
   return (
     <>
       {hotImage && <FullScreenContainer imageSrc={hotImage.photo} />}
-      <Like imageUuid={hotImage.uuid} />
+      {hotImage && <Like imageUuid={hotImage.uuid} bottom={40}/>}
     </>);
 };

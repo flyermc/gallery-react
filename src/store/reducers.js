@@ -36,12 +36,12 @@ function galleryReducer(state = initialState, action) {
     case LIKE_SET_SUCCEEDED:
       return {
         ...state,
-        likes: { [state['currentImage'].id]: true },
+        likes: { [action.uuid]: true },
       };
     case LIKE_DELETE_SUCCEEDED:
       return {
         ...state,
-        likes: { [state['currentImage'].id]: false },
+        likes: { [action.uuid]: false },
       };
     case IMAGES_FETCH_SUCCEEDED:
       return {

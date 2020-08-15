@@ -44,7 +44,7 @@ export const StyledImage = styled.img`
 
 export const StyledLikeContainer = styled.div`
     position: absolute;
-    bottom: 10px;
+    bottom: ${props => props.bottom + 'px'};
     left: 50%;
 `;
 

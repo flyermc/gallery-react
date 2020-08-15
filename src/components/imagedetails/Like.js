@@ -9,12 +9,13 @@ import { StyledLikeContainer, StyledLike } from './styled';
 import { requestLike, setLike, deleteLike } from '../../store/actions';
 import { likedImageSelector } from '../../selectors/imagesSelector';
 
-export const Like = memo(({ imageUuid }) => {
+export const Like = memo(({ imageUuid, bottom }) => {
   const dispatch = useDispatch();
 
   const liked = useSelector(likedImageSelector);
 
   const changeLike = (liked) => {
+    console.log(imageUuid);
     if (liked) {
       dispatch(deleteLike(imageUuid));
     } else {
@@ -32,7 +33,7 @@ export const Like = memo(({ imageUuid }) => {
   }, [liked]);
 
   return (
-    <StyledLikeContainer>
+    <StyledLikeContainer bottom={bottom}>
       {liked !== undefined && (
         <StyledLike
           src={liked ? FilledHeart : EmptyHeart}
@@ -48,4 +49,9 @@ export const Like = memo(({ imageUuid }) => {
 Like.propTypes = {
   imageUuid: PropTypes.string.isRequired,
   liked: PropTypes.bool,
+  bottom: PropTypes.number,
 };
+
+Like.defaultProps = {
+  bottom: 10,
+}

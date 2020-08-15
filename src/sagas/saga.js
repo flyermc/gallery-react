@@ -54,9 +54,10 @@ function* fetchLike(data) {
 
 function* setLike(data) {
   try {
+    console.log(data)
     const response = yield call(setLikeRequest, data.uuid);
     if (response.status === 201 || response.status === 304) {
-      yield put(setLikeSuccess());
+      yield put(setLikeSuccess(data.uuid));
     }
   } catch (e) {
     console.log('Cannot set like for image: ' + e.message);
@@ -65,12 +66,14 @@ function* setLike(data) {
 
 function* deleteLikeSaga(data) {
   try {
+    console.log(data)
     const response = yield call(deleteLikeRequest, data.uuid);
     if (response.status === 204) {
-      yield put(deleteLikeSuccess());
+      console.log(`Response status: ${response.status}`)
+      yield put(deleteLikeSuccess(data.uuid));
     }
   } catch (e) {
-    console.log('Cannot delet like for image: ' + e.message);
+    console.log('Cannot delete like for image: ' + e.message);
   }
 }
 
