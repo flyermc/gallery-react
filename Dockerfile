@@ -7,7 +7,7 @@ COPY package.json ${APP_DIR}/
 COPY package-lock.json ${APP_DIR}/
 
 RUN npm install --silent
-RUN npm run build
+# RUN npm run build
 COPY . ${APP_DIR}/
 
 CMD ["yarn", "start"]
