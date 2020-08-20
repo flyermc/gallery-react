@@ -17,7 +17,6 @@ export const ImageContainer = () => {
   const dispatch = useDispatch();
 
   const images = useSelector(imagesSelector);
-  images || dispatch(requestImages());
 
   const openedImage = useSelector(currentImageSelector);
 
@@ -36,6 +35,9 @@ export const ImageContainer = () => {
     }
     setCounter(diff);
   }, [resultDate]);
+
+  // eslint-disable-next-line
+  useEffect(() => dispatch(requestImages()), [])
 
   useEffect(() => {
     setTimeout(() => updateTimer(), 1000);

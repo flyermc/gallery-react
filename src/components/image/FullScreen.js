@@ -11,8 +11,10 @@ import { FullScreenContainer } from './styled';
 export const FullScreen = () => {
   const dispatch = useDispatch();
   const hotImage = useSelector(getHotImageSelector);
+
   useEffect(() => {
     dispatch(requestHotImage());
+    // eslint-disable-next-line
   }, [])
 
   return (
