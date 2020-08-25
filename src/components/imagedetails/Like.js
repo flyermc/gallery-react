@@ -29,7 +29,6 @@ export const Like = memo(({ imageUuid, bottom }) => {
 
   useEffect(() => {
     console.log(`Like changed to ${liked}`);
-    //dispatch(requestLike(imageUuid));
   }, [liked]);
 
   return (
