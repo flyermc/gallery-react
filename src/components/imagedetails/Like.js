@@ -27,10 +27,6 @@ export const Like = memo(({ imageUuid, bottom }) => {
     dispatch(requestLike(imageUuid));
   }, [dispatch, imageUuid]);
 
-  useEffect(() => {
-    console.log(`Like changed to ${liked}`);
-  }, [liked]);
-
   return (
     <StyledLikeContainer bottom={bottom}>
       {liked !== undefined && (
