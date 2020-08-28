@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Image, ImageDetails, Countdown, FullScreen } from '../components';
+import { Image, ImageDetails, Countdown, FullScreen, Archive } from '../components';
 import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
 
 import { requestImages } from '../store/actions';
@@ -60,6 +60,7 @@ export const ImageContainer = () => {
       ) : null}
       {!!openedImage && <ImageDetails image={openedImage} />}
       <Countdown counter={counter} />
+      <Archive />
     </Fragment>
   );
 };
