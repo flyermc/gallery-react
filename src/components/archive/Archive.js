@@ -9,17 +9,17 @@ export const Archive = () => {
   }
 
   return (
-    <StyledSidebar>
+    <StyledSidebar opened={opened}>
       {
         opened &&
         <div>
           <span>Opened</span>
-          <button onClick={() => handleSidebar(false)}>Close</button>
+          <button onClick={() => handleSidebar(false)}>X</button>
         </div>
       }
       {
         !opened &&
-        <button onClick={() => handleSidebar(true)}>Open sidebar</button>
+        <button onClick={() => handleSidebar(true)}>Open</button>
       }
     </StyledSidebar>
   )
