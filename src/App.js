@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { ImageContainer } from './containers';
 
 import configureStore from './store/store';
@@ -14,7 +15,12 @@ function App() {
         <Provider store={store}>
             <div className="App">
                 <header className="App-header">
-                    <ImageContainer />
+                  <Router>
+                    <Switch>
+                      <Route exact path="/" component={ImageContainer} />
+                      <Route component={ImageContainer} />
+                    </Switch>
+                  </Router>
                 </header>
             </div>
         </Provider>
