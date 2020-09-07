@@ -6,7 +6,8 @@ export const StyledSidebar = styled.div`
   height: 100%;
   left: 0;
   width: ${({ opened }) => opened ? '282px' : '52px'};
-  background: white;
+  background: #08080c;
+  color: white;
 `
 
 export const StyledItem = styled.div`
