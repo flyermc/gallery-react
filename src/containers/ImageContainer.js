@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Image, ImageDetails, Countdown, FullScreen, Archive } from '../components';
 import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
@@ -13,7 +14,7 @@ const WEEK = DAY * 7;
 const PUBLISH_DAY = 6;
 const PUBLISH_HOUR = 10;
 
-export const ImageContainer = () => {
+export const  ImageContainer = () => {
   const dispatch = useDispatch();
 
   const images = useSelector(imagesSelector);
@@ -52,7 +53,9 @@ export const ImageContainer = () => {
           <Container>
             {images.map(({ photo_preview, uuid }, index) => (
               <StyledItem number={index}>
-                <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
+                <Link to={`/image?id=${uuid}`}>
+                  <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
+                </Link>
               </StyledItem>
             ))}
           </Container>

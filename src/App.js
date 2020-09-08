@@ -18,6 +18,7 @@ function App() {
                   <Router>
                     <Switch>
                       <Route exact path="/" component={ImageContainer} />
+                      <Route path="/image" component={ImageContainer} />
                       <Route component={ImageContainer} />
                     </Switch>
                   </Router>

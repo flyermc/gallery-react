@@ -1,6 +1,7 @@
-import React, { useRef, memo } from 'react';
+import React, { useRef, memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { closeImage } from '../../store/actions';
 import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
@@ -14,7 +15,20 @@ export const ImageDetails = memo(({ image, like }) => {
 
     useClickOutsideHook(likeRef, () => {
         dispatch(closeImage());
+        return (<Redirect to={{
+          pathname: '/heeloooo'
+          }}
+        />)
     });
+
+    useEffect(() => {
+      return () => (
+        <Redirect to={{
+          pathname: '/heeloooo'
+          }}
+        />
+      )
+    }, [])
 
     return (
         <ImageContainer>

@@ -16,6 +16,7 @@ export const Archive = () => {
         opened
           ? (
             <StyledItem onClick={() => handleSidebar(!opened)}>
+              <span>Archive</span>
               <StyledCloseButton src={CloseIcon} alt='Close' />
             </StyledItem>
           )
