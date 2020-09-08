@@ -10,19 +10,18 @@ const Calendar = () => {
   const years = ["2019", "2020"]
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+  const itemBlock = (items, callback) => items.map((item) => (
+    <StyledItem onClick={() => callback(item)} key={item}>
+      <span>{item}</span>
+    </StyledItem>
+  )
+  )
+
   return (
     <>
-      { month
-          ? months.map((item) => (
-            <StyledItem>
-              <span>{item}</span>
-            </StyledItem>
-          ))
-          : years.map((item) => (
-            <StyledItem>
-              <span>{item}</span>
-            </StyledItem>
-          ))
+      { year
+          ? itemBlock(months, setMonth)
+          : itemBlock(years, setYear)
       }
     </>
   )

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const StyledSidebar = styled.div`
   position: absolute;
-  padding-top: 20px;
   height: 100%;
   left: 0;
   width: ${({ opened }) => opened ? '282px' : '52px'};
@@ -16,7 +15,9 @@ export const StyledTitleItem = styled.div`
   justify-content: center;
   height: 45px;
   cursor: pointer;
-  padding-bottom: 10px;
+  font-size: 28px;
+  font-weight: bolder;
+  padding: 5px 0;
 `
 
 export const StyledItem = styled.div`
@@ -25,7 +26,7 @@ export const StyledItem = styled.div`
   justify-content: start;
   padding-left: 30px;
   height: 45px;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
   background-color: #1c1c1c;
   margin-bottom: 1px;
