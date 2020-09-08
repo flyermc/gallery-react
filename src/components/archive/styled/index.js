@@ -10,8 +10,33 @@ export const StyledSidebar = styled.div`
   color: white;
 `
 
-export const StyledItem = styled.div`
+export const StyledTitleItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
   cursor: pointer;
+  padding-bottom: 10px;
+`
+
+export const StyledItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 30px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #1c1c1c;
+  margin-bottom: 1px;
+  &:hover {
+    background-color: #3c3c3c;
+  }
+`
+
+export const StyledTitle = styled.span`
+  margin-right: auto;
+  padding-left: 40px;
 `
 
 export const StyledCloseButton = styled.img`
