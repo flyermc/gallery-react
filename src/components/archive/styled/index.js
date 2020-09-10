@@ -40,6 +40,10 @@ export const StyledTitle = styled.span`
   padding-left: 40px;
 `
 
+export const StyledSubTitle = styled.span`
+  font-size: 22px;
+`
+
 export const StyledCloseButton = styled.img`
   float: right;
   padding-right: 12px;

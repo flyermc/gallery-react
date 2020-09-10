@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
-import { StyledSidebar, StyledTitleItem, StyledItem, StyledCloseButton, StyledTitle } from './styled'
+import { StyledSidebar, StyledTitleItem, StyledItem, StyledCloseButton, StyledTitle, StyledSubTitle } from './styled'
 import { requestArchive } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
 import CloseIcon from '../../icons/close-icon.svg'
@@ -32,7 +32,7 @@ const Calendar = () => {
     <>
       {year && (
         <StyledTitleItem onClick={() => setYear(null)}>
-          <StyledTitle>{year} {month ? month: null}</StyledTitle>
+          <StyledSubTitle>{year} {month ? month: null}</StyledSubTitle>
         </StyledTitleItem>
       )}
       { year
