@@ -13,11 +13,17 @@ export const IMAGES_FETCH_FAILED = 'IMAGES_FETCH_FAILED';
 export const HOT_IMAGE_REQUESTED = 'HOT_IMAGE_REQUESTED';
 export const HOT_IMAGE_FETCH_SUCCEEDED = 'HOT_IMAGE_FETCH_SUCCEEDED';
 export const HOT_IMAGE_FETCH_FAILED = 'HOT_IMAGE_FETCH_FAILED';
+export const ARCHIVE_REQUESTED = 'ARCHIVE_REQUESTED'
+export const ARCHIVE_FETCH_SUCCEEDED = 'ARCHIVE_FETCH_SUCCEEDED'
+export const ARCHIVE_FETCH_FAILED = 'ARCHIVE_FETCH_FAILED'
 
 export const loadImages = () => ({ type: LOAD_IMAGES });
 export const requestImages = () => ({ type: IMAGES_REQUESTED });
+export const requestArchive = (params) => ({ type: ARCHIVE_REQUESTED, params })
 export const imagesFetched = (images) => ({ type: IMAGES_FETCH_SUCCEEDED, images });
+export const archiveFetched = (images) => ({ type: ARCHIVE_FETCH_SUCCEEDED, images })
 export const imagesFetchFailed = (message) => ({ type: IMAGES_FETCH_FAILED, message });
+export const archiveFetchFailed = (message) => ({ type: ARCHIVE_FETCH_FAILED, message });
 
 export const requestHotImage = () => ({ type: HOT_IMAGE_REQUESTED });
 export const hotImageFetched = (image) => ({ type: HOT_IMAGE_FETCH_SUCCEEDED, image });
