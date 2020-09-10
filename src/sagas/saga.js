@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   getImagesRequest,
+  getArchiveRequest,
   getHotImageRequest,
   getLikeRequest,
   setLikeRequest,
@@ -13,12 +14,15 @@ import {
   LIKE_SET_REQUEST,
   LIKE_DELETE_REQUEST,
   imagesFetched,
+  archiveFetched,
   hotImageFetched,
   likeFetched,
   setLikeSuccess,
   deleteLikeSuccess,
   imagesFetchFailed,
+  archiveFetchFailed,
   hotImageFetchFailed,
+  ARCHIVE_REQUESTED,
 } from '../store/actions';
 
 function* fetchImages() {
@@ -28,6 +32,16 @@ function* fetchImages() {
   } catch (e) {
     yield put(imagesFetchFailed(e.message));
   }
+}
+
+function* fetchArchive(data) {
+    try {
+        console.log(data)
+        const images = yield call(getArchiveRequest, data.params)
+        yield put(archiveFetched(images))
+    } catch (e) {
+      yield put(archiveFetchFailed(e.message));
+    }
 }
 
 function* fetchHotImage() {
@@ -79,6 +93,7 @@ function* deleteLikeSaga(data) {
 
 function* imagesSaga() {
   yield takeLatest(IMAGES_REQUESTED, fetchImages);
+  yield takeLatest(ARCHIVE_REQUESTED, fetchArchive)
   yield takeLatest(HOT_IMAGE_REQUESTED, fetchHotImage);
   yield takeLatest(LIKE_REQUESTED, fetchLike);
   yield takeLatest(LIKE_SET_REQUEST, setLike);
