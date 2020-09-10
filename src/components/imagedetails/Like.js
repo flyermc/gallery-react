@@ -25,7 +25,7 @@ export const Like = memo(({ imageUuid, bottom }) => {
 
   useEffect(() => {
     dispatch(requestLike(imageUuid));
-  }, [dispatch, imageUuid]);
+  }, [imageUuid]);
 
   return (
     <StyledLikeContainer bottom={bottom}>
