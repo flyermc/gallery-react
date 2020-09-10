@@ -16,6 +16,8 @@ const likeBody = (method, data) => {
 
 export const getImagesRequest = () => fetch(IMAGES_URL).then((data) => data.json());
 
+export const getArchiveRequest = (data) => console.log(IMAGES_URL + `${data.year}/${data.month}`) || fetch(IMAGES_URL + `${data.year}/${data.month}`).then((resp) => resp.json())
+
 export const getHotImageRequest = () => fetch(HOT_IMAGE_URL).then((data) => data.json());
 
 export const getLikeRequest = (uuid) => fetch(LIKE_URL + uuid).then((data) => data);
