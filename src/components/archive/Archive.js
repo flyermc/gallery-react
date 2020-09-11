@@ -1,9 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
-import { StyledSidebar, StyledTitleItem, StyledItem, StyledCloseButton, StyledTitle, StyledSubTitle, StyledHambItem, StyledCurrentSelectedItem } from './styled'
+import {
+  StyledSidebar,
+  StyledTitleItem,
+  StyledItem,
+  StyledCloseButton,
+  StyledTitle,
+  StyledSubTitle,
+  StyledHambItem,
+  StyledCurrentSelectedItem,
+  StyledCollapsedButton,
+    StyledMenuItem,
+} from './styled'
 import { requestArchive, setArchiveYear, setArchiveMonth } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
 import CloseIcon from '../../icons/close-icon.svg'
+import CollapsedIcon from '../../icons/collapsed-icon.svg'
+import ExpandedIcon from '../../icons/expanded-icon.svg'
 
 const Calendar = ({ onLoad }) => {
   const [year, setYear] = React.useState(null)
@@ -29,26 +42,32 @@ const Calendar = ({ onLoad }) => {
   const years = ["2019", "2020"]
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-  const itemBlock = (items, handleOnClick) => items.map((item, index) => (
-      <StyledItem onClick={() => handleOnClick(item)} key={item} index={index + 1}>
-        <span>{item}</span>
-      </StyledItem>
+  const selectedCell = (item) => (
+    <StyledCurrentSelectedItem>
+      <StyledMenuItem inner={true}>{item}</StyledMenuItem>
+    </StyledCurrentSelectedItem>
+  )
+
+  const regularCell = (item, inner, handleClick, index) => (
+    <StyledItem onClick={() => handleClick(item)} key={item} index={index}>
+      { !inner &&  <StyledCollapsedButton src={year && year === item ? ExpandedIcon : CollapsedIcon} alt='Click this' /> }
+      <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
+    </StyledItem>
+  )
+
+  const itemBlock = (items, handleOnClick, inner=false) => items.map((item, index) => (
+      <>
+        {
+          inner && month === item
+            ? selectedCell(item)
+            : regularCell(item, inner, handleOnClick, index + 1)
+        }
+        { year === item && itemBlock(months, setMonth, true) }
+      </>
     )
   )
 
-  return (
-    <>
-      {year && (
-        <StyledCurrentSelectedItem onClick={() => setYear(null)}>
-          <StyledSubTitle>{year} {month ? month: null}</StyledSubTitle>
-        </StyledCurrentSelectedItem>
-      )}
-      { year
-          ? itemBlock(months, setMonth)
-          : itemBlock(years, setYear)
-      }
-    </>
-  )
+  return itemBlock(years, setYear)
 }
 
 export const Archive = () => {
