@@ -5,11 +5,11 @@ export const StyledSidebar = styled.div`
   height: 100%;
   left: 0;
   width: ${({ opened }) => opened ? '282px' : '52px'};
-  background: #08080c;
+  background: #263d53;
   color: white;
 `
 
-export const StyledTitleItem = styled.div`
+export const StyledHambItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,18 @@ export const StyledTitleItem = styled.div`
   cursor: pointer;
   font-size: 28px;
   font-weight: bolder;
+  background-color: #263d53;
   padding: 5px 0;
+`
+
+export const StyledTitleItem = styled(StyledHambItem)`
+  border-bottom: 1px solid;
+  margin: 0 40px 10px 40px;
+  border-color: #0F263B;
+`
+
+export const StyledCurrentSelectedItem = styled(StyledHambItem)`
+  background-color: #0F263B;
 `
 
 export const StyledItem = styled.div`
@@ -28,16 +39,16 @@ export const StyledItem = styled.div`
   height: 45px;
   font-size: 22px;
   cursor: pointer;
-  background-color: #1c1c1c;
+  color: white;
   margin-bottom: 1px;
   &:hover {
-    background-color: #3c3c3c;
+    color: #5EACEA;
   }
 `
 
 export const StyledTitle = styled.span`
-  margin-right: auto;
-  padding-left: 40px;
+  align-items: center;
+  justify-content: center;
 `
 
 export const StyledSubTitle = styled.span`
@@ -45,7 +56,7 @@ export const StyledSubTitle = styled.span`
 `
 
 export const StyledCloseButton = styled.img`
-  float: right;
+  position: absolute;
+  right: 0;
   padding-right: 12px;
-  padding-top: 2px;
 `
