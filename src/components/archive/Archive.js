@@ -1,12 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { archiveYearSelector, archiveMonthSelector } from '../../selectors/imagesSelector'
 import {
   StyledSidebar,
   StyledTitleItem,
   StyledItem,
-  StyledCloseButton,
+  StyledBackButton,
   StyledTitle,
-  StyledSubTitle,
   StyledHambItem,
   StyledCurrentSelectedItem,
   StyledCollapsedButton,
@@ -14,23 +14,20 @@ import {
 } from './styled'
 import { requestArchive, setArchiveYear, setArchiveMonth } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
-import CloseIcon from '../../icons/close-icon.svg'
+import BackIcon from '../../icons/back-icon.svg'
 import CollapsedIcon from '../../icons/collapsed-icon.svg'
 import ExpandedIcon from '../../icons/expanded-icon.svg'
 
-const Calendar = ({ onLoad }) => {
-  const [year, setYear] = React.useState(null)
-  const [month, setMonth] = React.useState(null)
+const Calendar = React.memo(() => {
+  const [year, setYear] = React.useState(useSelector(archiveYearSelector))
+  const [month, setMonth] = React.useState(useSelector(archiveMonthSelector))
   const dispatch = useDispatch()
 
   React.useEffect(() => {
     if (month && months.indexOf(month) >= 0) {
       const mindex = (months.indexOf(month) + 1).toString()
-      setTimeout(() => {
-        onLoad(false)
-      }, 1000)
       dispatch(requestArchive({year, month: mindex}))
-        dispatch(setArchiveMonth(mindex))
+      dispatch(setArchiveMonth(month))
     }
   // eslint-disable-next-line
   }, [month])
@@ -42,51 +39,57 @@ const Calendar = ({ onLoad }) => {
   const years = ["2019", "2020"]
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-  const selectedCell = (item) => (
-    <StyledCurrentSelectedItem>
-      <StyledMenuItem inner={true}>{item}</StyledMenuItem>
-    </StyledCurrentSelectedItem>
-  )
+  const selectedCell = (item, inner) => {
+    return (
+      <StyledCurrentSelectedItem>
+        <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
+      </StyledCurrentSelectedItem>
+    )
+  }
 
-  const regularCell = (item, inner, handleClick, index) => (
-    <StyledItem onClick={() => handleClick(item)} key={item} index={index}>
-      { !inner &&  <StyledCollapsedButton src={year && year === item ? ExpandedIcon : CollapsedIcon} alt='Click this' /> }
-      <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
-    </StyledItem>
-  )
+  const regularCell = (item, inner, handleClick, index) => {
+    return (
+      <StyledItem onClick={() => handleClick(item)} key={item} index={index}>
+        { !inner &&  <StyledCollapsedButton src={year && year === item ? ExpandedIcon : CollapsedIcon} alt='Click this' /> }
+        <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
+      </StyledItem>
+    )
+  }
 
-  const itemBlock = (items, handleOnClick, inner=false) => items.map((item, index) => (
+  const itemBlock = (items, handleOnClick, inner=false) => items.map((item, index) => {
+    return (
       <>
         {
-          inner && month === item
-            ? selectedCell(item)
+          inner && months.indexOf(month) == index
+            ? selectedCell(item, inner)
             : regularCell(item, inner, handleOnClick, index + 1)
         }
         { year === item && itemBlock(months, setMonth, true) }
       </>
-    )
+    )}
   )
 
   return itemBlock(years, setYear)
-}
+})
 
-export const Archive = () => {
+export const Archive = React.memo(() => {
   const [opened, setOpened] = React.useState(false)
+  const sidebarRef = React.useRef(null)
 
   const handleSidebar = (state) => {
     setOpened(state)
   }
 
   return (
-    <StyledSidebar opened={opened}>
+    <StyledSidebar opened={opened} ref={sidebarRef}>
       {
         opened
           ? (<>
               <StyledTitleItem onClick={() => handleSidebar(!opened)}>
                 <StyledTitle>Archive</StyledTitle>
-                <StyledCloseButton src={CloseIcon} alt='Close' />
+                <StyledBackButton src={BackIcon} alt='Close' />
               </StyledTitleItem>
-              <Calendar onLoad={setOpened} />
+              <Calendar />
             </>
           )
           : (
@@ -97,4 +100,4 @@ export const Archive = () => {
       }
     </StyledSidebar>
   )
-}
+})
