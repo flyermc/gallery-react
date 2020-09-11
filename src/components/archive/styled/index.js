@@ -27,10 +27,6 @@ export const StyledTitleItem = styled(StyledHambItem)`
   border-color: #0F263B;
 `
 
-export const StyledCurrentSelectedItem = styled(StyledHambItem)`
-  background-color: #0F263B;
-`
-
 export const StyledItem = styled.div`
   display: flex;
   align-items: center;
@@ -45,18 +41,27 @@ export const StyledItem = styled.div`
     color: #5EACEA;
   }
 `
+export const StyledCurrentSelectedItem = styled(StyledItem)`
+  background-color: #0F263B;
+`
 
 export const StyledTitle = styled.span`
   align-items: center;
   justify-content: center;
 `
 
-export const StyledSubTitle = styled.span`
-  font-size: 22px;
-`
-
 export const StyledCloseButton = styled.img`
   position: absolute;
   right: 0;
   padding-right: 12px;
+`
+
+export const StyledCollapsedButton = styled.img`
+  position: absolute;
+  left: 0;
+  padding-left: 10px;
+`
+
+export const StyledMenuItem = styled.div`
+    padding-left: ${({ inner }) => inner ? '20px' : '0'}
 `
