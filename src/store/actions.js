@@ -16,6 +16,8 @@ export const HOT_IMAGE_FETCH_FAILED = 'HOT_IMAGE_FETCH_FAILED';
 export const ARCHIVE_REQUESTED = 'ARCHIVE_REQUESTED'
 export const ARCHIVE_FETCH_SUCCEEDED = 'ARCHIVE_FETCH_SUCCEEDED'
 export const ARCHIVE_FETCH_FAILED = 'ARCHIVE_FETCH_FAILED'
+export const SET_ARCHIVE_YEAR = 'SET_ARCHIVE_YEAR'
+export const SET_ARCHIVE_MONTH = 'SET_ARCHIVE_MONTH'
 
 export const loadImages = () => ({ type: LOAD_IMAGES });
 export const requestImages = () => ({ type: IMAGES_REQUESTED });
@@ -24,6 +26,9 @@ export const imagesFetched = (images) => ({ type: IMAGES_FETCH_SUCCEEDED, images
 export const archiveFetched = (images) => ({ type: ARCHIVE_FETCH_SUCCEEDED, images })
 export const imagesFetchFailed = (message) => ({ type: IMAGES_FETCH_FAILED, message });
 export const archiveFetchFailed = (message) => ({ type: ARCHIVE_FETCH_FAILED, message });
+
+export const setArchiveYear = (year) => ({ type: SET_ARCHIVE_YEAR, year})
+export const setArchiveMonth = (month) => ({ type: SET_ARCHIVE_MONTH, month })
 
 export const requestHotImage = () => ({ type: HOT_IMAGE_REQUESTED });
 export const hotImageFetched = (image) => ({ type: HOT_IMAGE_FETCH_SUCCEEDED, image });
