@@ -50,10 +50,10 @@ export const StyledTitle = styled.span`
   justify-content: center;
 `
 
-export const StyledCloseButton = styled.img`
+export const StyledBackButton = styled.img`
   position: absolute;
-  right: 0;
-  padding-right: 12px;
+  left: 0;
+  padding-left: 12px;
 `
 
 export const StyledCollapsedButton = styled.img`
