@@ -19,7 +19,8 @@ import CollapsedIcon from '../../icons/collapsed-icon.svg'
 import ExpandedIcon from '../../icons/expanded-icon.svg'
 
 const Calendar = React.memo(() => {
-  const [year, setYear] = React.useState(useSelector(archiveYearSelector))
+  const yearFromStore = useSelector(archiveYearSelector)
+  const [year, setYear] = React.useState(yearFromStore)
   const [month, setMonth] = React.useState(useSelector(archiveMonthSelector))
   const dispatch = useDispatch()
 
@@ -27,14 +28,15 @@ const Calendar = React.memo(() => {
     if (month && months.indexOf(month) >= 0) {
       const mindex = (months.indexOf(month) + 1).toString()
       dispatch(requestArchive({year, month: mindex}))
+      dispatch(setArchiveYear(year))
       dispatch(setArchiveMonth(month))
     }
   // eslint-disable-next-line
   }, [month])
 
-  React.useEffect(() => {
-    dispatch(setArchiveYear(year))
-  }, [year])
+  const handleYearClick = (item) => {
+    year === item ? setYear(null) : setYear(item)
+  }
 
   const years = ["2019", "2020"]
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -60,7 +62,7 @@ const Calendar = React.memo(() => {
     return (
       <>
         {
-          inner && months.indexOf(month) == index
+          inner && months.indexOf(month) == index && year === yearFromStore
             ? selectedCell(item, inner)
             : regularCell(item, inner, handleOnClick, index + 1)
         }
@@ -69,7 +71,7 @@ const Calendar = React.memo(() => {
     )}
   )
 
-  return itemBlock(years, setYear)
+  return itemBlock(years, handleYearClick)
 })
 
 export const Archive = React.memo(() => {
@@ -81,7 +83,7 @@ export const Archive = React.memo(() => {
   }
 
   return (
-    <StyledSidebar opened={opened} ref={sidebarRef}>
+    <StyledSidebar opened={opened}>
       {
         opened
           ? (<>
@@ -89,7 +91,7 @@ export const Archive = React.memo(() => {
                 <StyledTitle>Archive</StyledTitle>
                 <StyledBackButton src={BackIcon} alt='Close' />
               </StyledTitleItem>
-              <Calendar />
+              <Calendar ref={sidebarRef} />
             </>
           )
           : (
