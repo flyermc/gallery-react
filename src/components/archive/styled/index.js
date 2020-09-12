@@ -65,3 +65,8 @@ export const StyledCollapsedButton = styled.img`
 export const StyledMenuItem = styled.div`
     padding-left: ${({ inner }) => inner ? '20px' : '0'}
 `
+
+export const StyledGalleryTitle = styled.div`
+  position: absolute;
+  top: 20px;
+`

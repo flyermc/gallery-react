@@ -10,13 +10,23 @@ import {
   StyledHambItem,
   StyledCurrentSelectedItem,
   StyledCollapsedButton,
-    StyledMenuItem,
+  StyledMenuItem,
+  StyledGalleryTitle,
 } from './styled'
 import { requestArchive, setArchiveYear, setArchiveMonth } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
 import BackIcon from '../../icons/back-icon.svg'
 import CollapsedIcon from '../../icons/collapsed-icon.svg'
 import ExpandedIcon from '../../icons/expanded-icon.svg'
+
+const GalleryTitle = React.memo(() => {
+  const year = useSelector(archiveYearSelector)
+  const month = useSelector(archiveMonthSelector)
+
+  return (
+    <StyledGalleryTitle>{month ? `${month} ${year}`: `Latest images`}</StyledGalleryTitle>
+  )
+})
 
 const Calendar = React.memo(() => {
   const yearFromStore = useSelector(archiveYearSelector)
@@ -76,30 +86,32 @@ const Calendar = React.memo(() => {
 
 export const Archive = React.memo(() => {
   const [opened, setOpened] = React.useState(false)
-  const sidebarRef = React.useRef(null)
 
   const handleSidebar = (state) => {
     setOpened(state)
   }
 
   return (
-    <StyledSidebar opened={opened}>
-      {
-        opened
-          ? (<>
-              <StyledTitleItem onClick={() => handleSidebar(!opened)}>
-                <StyledTitle>Archive</StyledTitle>
-                <StyledBackButton src={BackIcon} alt='Close' />
-              </StyledTitleItem>
-              <Calendar ref={sidebarRef} />
-            </>
-          )
-          : (
-            <StyledHambItem onClick={() => handleSidebar(!opened)}>
-              <img src={MenuIcon} alt='Menu' />
-            </StyledHambItem>
-          )
-      }
-    </StyledSidebar>
+    <>
+      <GalleryTitle />
+      <StyledSidebar opened={opened}>
+        {
+          opened
+            ? (<>
+                <StyledTitleItem onClick={() => handleSidebar(!opened)}>
+                  <StyledTitle>Archive</StyledTitle>
+                  <StyledBackButton src={BackIcon} alt='Close' />
+                </StyledTitleItem>
+                <Calendar />
+              </>
+            )
+            : (
+              <StyledHambItem onClick={() => handleSidebar(!opened)}>
+                <img src={MenuIcon} alt='Menu' />
+              </StyledHambItem>
+            )
+        }
+      </StyledSidebar>
+    </>
   )
 })
