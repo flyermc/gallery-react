@@ -50,20 +50,22 @@ export const  ImageContainer = () => {
         WEEK - counter <= DAY ? (
           <FullScreen />
         ) : (
-          <Container>
-            {images.map(({ photo_preview, uuid }, index) => (
-              <StyledItem number={index}>
-                <Link to={`/image?id=${uuid}`}>
-                  <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
-                </Link>
-              </StyledItem>
-            ))}
-          </Container>
+          <>
+            <Container>
+              {images.map(({ photo_preview, uuid }, index) => (
+                <StyledItem number={index}>
+                  <Link to={`/image?id=${uuid}`}>
+                    <Image imageSrc={photo_preview} id={uuid} key={uuid} number={index} />
+                  </Link>
+                </StyledItem>
+              ))}
+            </Container>
+            <Archive />
+          </>
         )
       ) : null}
       {!!openedImage && <ImageDetails image={openedImage} />}
       <Countdown counter={counter} />
-      <Archive />
     </Fragment>
   );
 };
