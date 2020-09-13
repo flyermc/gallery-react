@@ -118,6 +118,16 @@ export const Archive = React.memo(() => {
     setOpened(state)
   }
 
+    const shortMonth = React.useRef(null)
+
+    React.useEffect(() => {
+        if (month && findMonth(month) >= 0) {
+            const index = findMonth(month)
+            console.log(`Index: $(index)`)
+            shortMonth.current = MONTHS[index][1]
+        }
+    }, [month, shortMonth])
+
   return (
     <>
       <GalleryTitle />
@@ -139,7 +149,7 @@ export const Archive = React.memo(() => {
                 </StyledHambItem>
                 <StyledMiniCalendar>
                   <span>{year}</span>
-                  <span>{month}</span>
+                  <span>{shortMonth.current}</span>
                 </StyledMiniCalendar>
               </>
             )
