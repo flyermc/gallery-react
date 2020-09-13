@@ -12,6 +12,7 @@ import {
   StyledCollapsedButton,
   StyledMenuItem,
   StyledGalleryTitle,
+  StyledMiniCalendar,
 } from './styled'
 import { requestArchive, setArchiveYear, setArchiveMonth } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
@@ -86,6 +87,8 @@ const Calendar = React.memo(() => {
 
 export const Archive = React.memo(() => {
   const [opened, setOpened] = React.useState(false)
+  const year = useSelector(archiveYearSelector)
+  const month = useSelector(archiveMonthSelector)
 
   const handleSidebar = (state) => {
     setOpened(state)
@@ -106,9 +109,15 @@ export const Archive = React.memo(() => {
               </>
             )
             : (
-              <StyledHambItem onClick={() => handleSidebar(!opened)}>
-                <img src={MenuIcon} alt='Menu' />
-              </StyledHambItem>
+              <>
+                <StyledHambItem onClick={() => handleSidebar(!opened)}>
+                  <img src={MenuIcon} alt='Menu' />
+                </StyledHambItem>
+                <StyledMiniCalendar>
+                  <span>{year}</span>
+                  <span>{month}</span>
+                </StyledMiniCalendar>
+              </>
             )
         }
       </StyledSidebar>

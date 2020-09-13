@@ -21,6 +21,12 @@ export const StyledHambItem = styled.div`
   padding: 5px 0;
 `
 
+export const StyledMiniCalendar = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+`
+
 export const StyledTitleItem = styled(StyledHambItem)`
   border-bottom: 1px solid;
   margin: 0 40px 10px 40px;
