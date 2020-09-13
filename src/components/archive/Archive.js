@@ -20,6 +20,33 @@ import BackIcon from '../../icons/back-icon.svg'
 import CollapsedIcon from '../../icons/collapsed-icon.svg'
 import ExpandedIcon from '../../icons/expanded-icon.svg'
 
+const YEARS = ['2019', '2020']
+const MONTHS = [
+  ['January', 'Jan'],
+  ['February', 'Feb'],
+  ['March', 'Mar'],
+  ['Arpil', 'Apr'],
+  ['May', 'May'],
+  ['June', 'Jun'],
+  ['July', 'Jul'],
+  ['August', 'Aug'],
+  ['September', 'Sep'],
+  ['October', 'Oct'],
+  ['November', 'Nov'],
+  ['December', 'Dec']
+]
+
+const findMonth = (month) => {
+    let i;
+    console.log(`findMonth ${MONTHS.length}`)
+    for (i = 0; i < MONTHS.length; i++) {
+        console.log(`index: ${i}`)
+        if (MONTHS[i][0] === month) {
+            return i
+        }
+    }
+    return -1
+}
 const GalleryTitle = React.memo(() => {
   const year = useSelector(archiveYearSelector)
   const month = useSelector(archiveMonthSelector)
@@ -36,9 +63,9 @@ const Calendar = React.memo(() => {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    if (month && months.indexOf(month) >= 0) {
-      const mindex = (months.indexOf(month) + 1).toString()
-      dispatch(requestArchive({year, month: mindex}))
+    if (month && findMonth(month) >= 0) {
+      const mindex = findMonth(month) + 1
+      dispatch(requestArchive({year, month: mindex.toString()}))
       dispatch(setArchiveYear(year))
       dispatch(setArchiveMonth(month))
     }
@@ -48,9 +75,6 @@ const Calendar = React.memo(() => {
   const handleYearClick = (item) => {
     year === item ? setYear(null) : setYear(item)
   }
-
-  const years = ["2019", "2020"]
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   const selectedCell = (item, inner) => {
     return (
@@ -73,16 +97,16 @@ const Calendar = React.memo(() => {
     return (
       <>
         {
-          inner && months.indexOf(month) == index && year === yearFromStore
+          inner && findMonth(month) == index && year === yearFromStore
             ? selectedCell(item, inner)
             : regularCell(item, inner, handleOnClick, index + 1)
         }
-        { year === item && itemBlock(months, setMonth, true) }
+        { year === item && itemBlock(MONTHS.map((month) => month[0]), setMonth, true) }
       </>
     )}
   )
 
-  return itemBlock(years, handleYearClick)
+  return itemBlock(YEARS, handleYearClick)
 })
 
 export const Archive = React.memo(() => {
