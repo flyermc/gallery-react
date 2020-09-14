@@ -47,14 +47,6 @@ const findMonth = (month) => {
     }
     return -1
 }
-const GalleryTitle = React.memo(() => {
-  const year = useSelector(archiveYearSelector)
-  const month = useSelector(archiveMonthSelector)
-
-  return (
-    <StyledGalleryTitle>{month ? `${month} ${year}`: `Latest images`}</StyledGalleryTitle>
-  )
-})
 
 const Calendar = React.memo(() => {
   const yearFromStore = useSelector(archiveYearSelector)
@@ -130,7 +122,6 @@ export const Archive = React.memo(() => {
 
   return (
     <>
-      <GalleryTitle />
       <StyledSidebar opened={opened}>
         {
           opened
@@ -149,7 +140,7 @@ export const Archive = React.memo(() => {
                 </StyledHambItem>
                 <StyledMiniCalendar>
                   <span>{year}</span>
-                  <span>{shortMonth.current}</span>
+                  <span className='month'>{shortMonth.current}</span>
                 </StyledMiniCalendar>
               </>
             )

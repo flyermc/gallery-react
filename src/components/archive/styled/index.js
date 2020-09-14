@@ -24,7 +24,10 @@ export const StyledHambItem = styled.div`
 export const StyledMiniCalendar = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 16px;
+  &.month {
+    font-size: 18px;
+  }
 `
 
 export const StyledTitleItem = styled(StyledHambItem)`
@@ -72,7 +75,3 @@ export const StyledMenuItem = styled.div`
     padding-left: ${({ inner }) => inner ? '20px' : '0'}
 `
 
-export const StyledGalleryTitle = styled.div`
-  position: absolute;
-  top: 20px;
-`
