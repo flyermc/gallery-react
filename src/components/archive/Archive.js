@@ -13,6 +13,7 @@ import {
   StyledMenuItem,
   StyledGalleryTitle,
   StyledMiniCalendar,
+  StyledMiniCalText,
 } from './styled'
 import { requestArchive, setArchiveYear, setArchiveMonth } from '../../store/actions'
 import MenuIcon from '../../icons/menu-icon.svg'
@@ -139,8 +140,8 @@ export const Archive = React.memo(() => {
                   <img src={MenuIcon} alt='Menu' />
                 </StyledHambItem>
                 <StyledMiniCalendar>
-                  <span>{year}</span>
-                  <span className='month'>{shortMonth.current}</span>
+                  <StyledMiniCalText>{year}</StyledMiniCalText>
+                  <StyledMiniCalText>{shortMonth.current}</StyledMiniCalText>
                 </StyledMiniCalendar>
               </>
             )

@@ -22,11 +22,18 @@ export const StyledHambItem = styled.div`
 `
 
 export const StyledMiniCalendar = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   font-size: 16px;
-  &.month {
-    font-size: 18px;
+  font-weight: bold;
+`
+
+export const StyledMiniCalText = styled.span`
+  font-size: 16px;
+  &:last-child {
+    font-size: 22px;
+    font-weight: bolder;
   }
 `
 
