@@ -140,8 +140,8 @@ export const Archive = React.memo(() => {
                   <img src={MenuIcon} alt='Menu' />
                 </StyledHambItem>
                 <StyledMiniCalendar>
-                  <StyledMiniCalText>{year}</StyledMiniCalText>
                   <StyledMiniCalText>{shortMonth.current}</StyledMiniCalText>
+                  <StyledMiniCalText>{year}</StyledMiniCalText>
                 </StyledMiniCalendar>
               </>
             )

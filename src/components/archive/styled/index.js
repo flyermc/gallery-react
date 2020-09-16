@@ -31,7 +31,7 @@ export const StyledMiniCalendar = styled.div`
 
 export const StyledMiniCalText = styled.span`
   font-size: 16px;
-  &:last-child {
+  &:first-child {
     font-size: 22px;
     font-weight: bolder;
   }
