@@ -1,7 +1,7 @@
 import React, { useRef, memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { closeImage } from '../../store/actions';
 import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
@@ -10,34 +10,26 @@ import { Like } from './Like';
 import { ImageContainer, StyledImage } from './styled';
 
 export const ImageDetails = memo(({ image, like }) => {
-    const dispatch = useDispatch();
-    const likeRef = useRef(null);
+  const dispatch = useDispatch();
+  const likeRef = useRef(null);
+  const history = useHistory()
 
-    useClickOutsideHook(likeRef, () => {
-        dispatch(closeImage());
-        return (<Redirect to={{
-          pathname: '/heeloooo'
-          }}
-        />)
-    });
+  useClickOutsideHook(likeRef, () => {
+      dispatch(closeImage())
+  });
 
-    useEffect(() => {
-      return () => (
-        <Redirect to={{
-          pathname: '/heeloooo'
-          }}
-        />
-      )
-    }, [])
+  useEffect(() => {
+    return () => history.push('/')
+  }, [])
 
-    return (
-        <ImageContainer>
-            <StyledImage src={image.photo} alt='Loading...' />
-            <div ref={likeRef}>
-                <Like imageUuid={image.uuid} likeFrom={like} />
-            </div>
-        </ImageContainer>
-    );
+  return (
+    <ImageContainer>
+      <StyledImage src={image.photo} alt='Loading...' />
+      <div ref={likeRef}>
+        <Like imageUuid={image.uuid} likeFrom={like} />
+      </div>
+    </ImageContainer>
+  );
 });
 
 ImageDetails.propTypes = {
