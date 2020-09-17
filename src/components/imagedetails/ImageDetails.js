@@ -15,7 +15,8 @@ export const ImageDetails = memo(({ image, like }) => {
   const history = useHistory()
 
   useClickOutsideHook(likeRef, () => {
-      dispatch(closeImage())
+      // dispatch(closeImage())
+      history.push('/')
   });
 
   useEffect(() => {
