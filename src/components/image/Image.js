@@ -22,7 +22,6 @@ export const Image = ({ imageSrc, id, number }) => {
                     }
                 height={height}
                 width={width}
-                onClick={() => dispatch(openImage({id}))}
                 alt='Loading...'
             />
         </StyledImageContainer>

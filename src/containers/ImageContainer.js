@@ -1,11 +1,12 @@
 import React, { Fragment, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string'
 
 import { Image, ImageDetails, Countdown, FullScreen, Archive } from '../components';
 import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
 
-import { requestImages } from '../store/actions';
+import { requestImages, openImage, closeImage } from '../store/actions';
 
 import { Container, StyledItem } from './styled';
 
@@ -14,7 +15,10 @@ const WEEK = DAY * 7;
 const PUBLISH_DAY = 6;
 const PUBLISH_HOUR = 10;
 
-export const  ImageContainer = () => {
+export const  ImageContainer = ({ location }) => {
+
+  const {id} = queryString.parse(location.search)
+
   const dispatch = useDispatch();
 
   const images = useSelector(imagesSelector);
@@ -37,12 +41,21 @@ export const  ImageContainer = () => {
     setCounter(diff);
   }, [resultDate]);
 
-  // eslint-disable-next-line
-  useEffect(() => dispatch(requestImages()), [])
+  useEffect(() => {
+    dispatch(requestImages())
+  }, [])
+
+  useEffect(() => {
+    if (id === undefined) {
+      dispatch(closeImage())
+    } else {
+      dispatch(openImage(id))
+    }
+  }, [id])
 
   useEffect(() => {
     setTimeout(() => updateTimer(), 1000);
-  }, [updateTimer]);
+  }, [counter]);
 
   return (
     <Fragment>
