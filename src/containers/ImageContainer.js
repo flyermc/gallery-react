@@ -17,9 +17,10 @@ const PUBLISH_HOUR = 10;
 
 export const  ImageContainer = ({ location }) => {
 
-  const {id} = queryString.parse(location.search)
+  const { id } = queryString.parse(location.search)
 
   const dispatch = useDispatch();
+  const [ currentImage, setCurrentImage ] = React.useState(null)
 
   const images = useSelector(imagesSelector);
 
@@ -47,9 +48,14 @@ export const  ImageContainer = ({ location }) => {
 
   useEffect(() => {
     if (id === undefined) {
+      setCurrentImage(null)
       dispatch(closeImage())
+      console.log(`Close image`)
     } else {
       dispatch(openImage(id))
+      setCurrentImage(id)
+      console.log(`Open image ${id}`)
+      console.log(`openedImage is ${openedImage}`)
     }
   }, [id])
 

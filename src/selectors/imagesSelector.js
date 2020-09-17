@@ -14,7 +14,7 @@ export const currentImageSelector = createSelector(
   getImages,
   getCurrentImage,
   (images, currentImage) =>
-    images && currentImage && images.find((image) => image.uuid === currentImage.id),
+    console.log(currentImage) || images && currentImage && images.find((image) => image.uuid === currentImage),
 );
 
 export const archiveYearSelector = createSelector(
