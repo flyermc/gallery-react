@@ -39,9 +39,7 @@ const MONTHS = [
 
 const findMonth = (month) => {
     let i;
-    console.log(`findMonth ${MONTHS.length}`)
     for (i = 0; i < MONTHS.length; i++) {
-        console.log(`index: ${i}`)
         if (MONTHS[i][0] === month) {
             return i
         }
@@ -116,7 +114,6 @@ export const Archive = React.memo(() => {
     React.useEffect(() => {
         if (month && findMonth(month) >= 0) {
             const index = findMonth(month)
-            console.log(`Index: $(index)`)
             shortMonth.current = MONTHS[index][1]
         }
     }, [month, shortMonth])

@@ -36,7 +36,6 @@ function* fetchImages() {
 
 function* fetchArchive(data) {
     try {
-        console.log(data)
         const images = yield call(getArchiveRequest, data.params)
         yield put(archiveFetched(images))
     } catch (e) {
@@ -68,7 +67,6 @@ function* fetchLike(data) {
 
 function* setLike(data) {
   try {
-    console.log(data)
     const response = yield call(setLikeRequest, data.uuid);
     if (response.status === 201 || response.status === 304) {
       yield put(setLikeSuccess(data.uuid));
@@ -80,7 +78,6 @@ function* setLike(data) {
 
 function* deleteLikeSaga(data) {
   try {
-    console.log(data)
     const response = yield call(deleteLikeRequest, data.uuid);
     if (response.status === 204) {
       console.log(`Response status: ${response.status}`)

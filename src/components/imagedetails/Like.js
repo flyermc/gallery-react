@@ -15,7 +15,6 @@ export const Like = memo(({ imageUuid, bottom }) => {
   const liked = useSelector(likedImageSelector);
 
   const changeLike = (liked) => {
-    console.log(imageUuid);
     if (liked) {
       dispatch(deleteLike(imageUuid));
     } else {
