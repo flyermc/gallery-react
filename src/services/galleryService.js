@@ -1,6 +1,7 @@
 const IP_ADDRESS = process.env.REMOTE_IP || '18.158.181.102';
 const HOST = `http://${IP_ADDRESS}:8010/`;
 const IMAGES_URL = HOST + 'images/';
+const IMAGE_URL = HOST + 'image/'
 const HOT_IMAGE_URL = HOST + 'hot/';
 const LIKE_URL = HOST + 'like/';
 
@@ -15,6 +16,8 @@ const likeBody = (method, data) => {
 };
 
 export const getImagesRequest = () => fetch(IMAGES_URL).then((data) => data.json());
+
+export const getImageRequest = (uuid) => fetch(IMAGE_URL + `${uuid}`).then((data) => data.json());
 
 export const getArchiveRequest = (data) => fetch(IMAGES_URL + `${data.year}/${data.month}`).then((resp) => resp.json())
 
