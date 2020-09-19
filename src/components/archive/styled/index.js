@@ -7,6 +7,7 @@ export const StyledSidebar = styled.div`
   width: ${({ opened }) => opened ? '282px' : '52px'};
   background: #263d53;
   color: white;
+  transition: width 0.5s;
 `
 
 export const StyledHambItem = styled.div`
