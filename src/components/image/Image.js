@@ -1,11 +1,8 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { openImage } from '../../store/actions';
 import { StyledImage, StyledImageContainer } from './styled';
 
 export const Image = ({ imageSrc, id, number }) => {
-    const dispatch = useDispatch()
     const imgEl = useRef(null);
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
