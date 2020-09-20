@@ -50,7 +50,7 @@ export const StyledItem = styled.div`
   justify-content: start;
   padding-left: 30px;
   height: 45px;
-  font-size: 22px;
+  font-size: 18px;
   cursor: pointer;
   color: white;
   margin-bottom: 1px;
@@ -60,6 +60,10 @@ export const StyledItem = styled.div`
 `
 export const StyledCurrentSelectedItem = styled(StyledItem)`
   background-color: #0F263B;
+  font-weight: bold;
+  &:hover {
+    color: white;
+  }
 `
 
 export const StyledTitle = styled.span`
