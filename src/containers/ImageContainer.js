@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string'
 
 import { Image, ImageDetails, Countdown, FullScreen, Archive } from '../components';
-import { imagesSelector, currentImageSelector } from '../selectors/imagesSelector';
+import { imagesSelector } from '../selectors/imagesSelector';
 
 import { requestImages, openImage, closeImage } from '../store/actions';
 
@@ -16,23 +16,19 @@ const PUBLISH_DAY = 6;
 const PUBLISH_HOUR = 10;
 
 export const  ImageContainer = ({ location }) => {
-
   const { id } = queryString.parse(location.search)
 
   const dispatch = useDispatch();
-  const [ currentImage, setCurrentImage ] = React.useState(null)
+  const [ currentImageUUID, setCurrentImageUUID ] = React.useState(null)
+  const [ counter, setCounter ] = useState(0);
 
   const images = useSelector(imagesSelector);
-
-  const openedImage = useSelector(currentImageSelector);
 
   var resultDate = new Date();
   const now = new Date();
 
   resultDate.setDate(now.getDate() + ((WEEK + PUBLISH_DAY - now.getDay()) % WEEK));
   resultDate.setHours(PUBLISH_HOUR, 0, 0, 0);
-
-  const [counter, setCounter] = useState(0);
 
   const updateTimer = useCallback(() => {
     let diff = resultDate - new Date();
@@ -48,14 +44,11 @@ export const  ImageContainer = ({ location }) => {
 
   useEffect(() => {
     if (id === undefined) {
-      setCurrentImage(null)
       dispatch(closeImage())
-      console.log(`Close image`)
+      setCurrentImageUUID(null)
     } else {
       dispatch(openImage(id))
-      setCurrentImage(id)
-      console.log(`Open image ${id}`)
-      console.log(`openedImage is ${openedImage}`)
+      setCurrentImageUUID(id)
     }
   }, [id])
 
@@ -83,7 +76,7 @@ export const  ImageContainer = ({ location }) => {
           </>
         )
       ) : null}
-      {!!openedImage && <ImageDetails image={openedImage} />}
+      {console.log(currentImageUUID) || !!currentImageUUID && <ImageDetails id={currentImageUUID} />}
       <Countdown counter={counter} />
     </Fragment>
   );

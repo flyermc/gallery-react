@@ -6,20 +6,24 @@ import {
   getLikeRequest,
   setLikeRequest,
   deleteLikeRequest,
+  getImageRequest,
 } from '../services/galleryService';
 import {
+  IMAGE_REQUESTED,
   IMAGES_REQUESTED,
   HOT_IMAGE_REQUESTED,
   LIKE_REQUESTED,
   LIKE_SET_REQUEST,
   LIKE_DELETE_REQUEST,
   imagesFetched,
+  imageFetched,
   archiveFetched,
   hotImageFetched,
   likeFetched,
   setLikeSuccess,
   deleteLikeSuccess,
   imagesFetchFailed,
+  imageFetchFailed,
   archiveFetchFailed,
   hotImageFetchFailed,
   ARCHIVE_REQUESTED,
@@ -31,6 +35,15 @@ function* fetchImages() {
     yield put(imagesFetched(images));
   } catch (e) {
     yield put(imagesFetchFailed(e.message));
+  }
+}
+
+function* fetchImage(uuid) {
+  try {
+    const image = yield call(getImageRequest, uuid)
+    yield put(imageFetched(image))
+  } catch (e) {
+    yield put(imageFetchFailed(e.message));
   }
 }
 
@@ -90,6 +103,7 @@ function* deleteLikeSaga(data) {
 
 function* imagesSaga() {
   yield takeLatest(IMAGES_REQUESTED, fetchImages);
+  yield takeLatest(IMAGE_REQUESTED, fetchImage);
   yield takeLatest(ARCHIVE_REQUESTED, fetchArchive)
   yield takeLatest(HOT_IMAGE_REQUESTED, fetchHotImage);
   yield takeLatest(LIKE_REQUESTED, fetchLike);

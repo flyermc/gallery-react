@@ -2,6 +2,7 @@ import {
   OPEN_IMAGE,
   CLOSE_IMAGE,
   IMAGES_FETCH_SUCCEEDED,
+  IMAGE_FETCH_SECCEEDED,
   ARCHIVE_FETCH_SUCCEEDED,
   HOT_IMAGE_FETCH_SUCCEEDED,
   LIKE_FETCH_SUCCEEDED,
@@ -55,27 +56,32 @@ function galleryReducer(state = initialState, action) {
         ...state,
         images: action.images,
       };
+    case IMAGE_FETCH_SECCEEDED:
+      return {
+        ...state,
+        currentImage: action.image,
+      }
     case ARCHIVE_FETCH_SUCCEEDED:
       return {
         ...state,
         images: action.images,
       }
     case SET_ARCHIVE_YEAR:
-          return {
-              ...state,
-              archive: {
-                  ...state.archive,
-                  year: action.year
-              }
-          }
+      return {
+        ...state,
+        archive: {
+          ...state.archive,
+          year: action.year
+        }
+      }
     case SET_ARCHIVE_MONTH:
-          return {
-              ...state,
-              archive: {
-                  ...state.archive,
-                  month: action.month
-              }
-          }
+      return {
+        ...state,
+        archive: {
+          ...state.archive,
+          month: action.month
+        }
+      }
     case HOT_IMAGE_FETCH_SUCCEEDED:
       return {
         ...state,
