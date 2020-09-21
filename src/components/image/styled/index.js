@@ -20,12 +20,14 @@ export const StyledImageContainer = styled.div`
 export const StyledImage = styled.img`
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
-    animation: 0.5s ${fadeIn} ease-out;
+    /*animation: 0.5s ${fadeIn} ease-out;*/
+    transition: all 0.3s ease-out;
+    cursor: pointer;
 
     &:hover {
         -webkit-filter: none;
         filter: none;
-        transform: scale(1.01);
+        transform: scale(1.2);
         box-shadow: inset 0 0 0 25px #53a7ea;
     };
     cursor: pointer;
