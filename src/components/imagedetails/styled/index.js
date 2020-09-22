@@ -15,7 +15,7 @@ const pulse = keyframes`
 `;
 
 export const ImageContainer = styled.div`
-    display: block; /* Hidden by default */
+    display: ${({ loading }) => loading ? `none` : `block` }; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -60,3 +60,10 @@ export const StyledLike = styled.img`
         transform: scale(1.3);
     }
 `;
+
+export const LoadingContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+`

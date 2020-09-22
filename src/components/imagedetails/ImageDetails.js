@@ -8,20 +8,22 @@ import { currentImageSelector } from '../../selectors/imagesSelector';
 import { getImageRequest } from '../../services/galleryService'
 
 import { Like } from './Like';
-import { ImageContainer, StyledImage } from './styled';
+import { ImageContainer, StyledImage, LoadingContainer } from './styled';
 
 export const ImageDetails = memo(({ id, like }) => {
   const likeRef = useRef(null);
   const history = useHistory()
   const openedImage = useSelector(currentImageSelector);
   const [ image, setImage ] = React.useState(openedImage)
+  const [ loading, setLoading ] = React.useState(true)
+
+  const imageLoaded = () => setLoading(false)
 
   useClickOutsideHook(likeRef, () => {
       history.push('/')
   });
 
   useEffect(() => {
-    console.log("Loading imageDetails component")
     async function getImage() {
       const response = await getImageRequest(id)
       setImage(response)
@@ -33,14 +35,16 @@ export const ImageDetails = memo(({ id, like }) => {
 
   return (
     <>
+      { loading && <LoadingContainer>Loading...</LoadingContainer>  }
       { image && (
-        <ImageContainer>
-          <StyledImage src={image.photo} alt='Loading...' />
-          <div ref={likeRef}>
-            <Like imageUuid={image.uuid} likeFrom={like} />
-          </div>
-        </ImageContainer>
-      )}
+            <ImageContainer loading={loading}>
+              <StyledImage src={image.photo} alt='Loading...' onLoad={imageLoaded} />
+              <div ref={likeRef}>
+                <Like imageUuid={image.uuid} likeFrom={like} />
+              </div>
+            </ImageContainer>
+          )
+        }
     </>
   );
 });
