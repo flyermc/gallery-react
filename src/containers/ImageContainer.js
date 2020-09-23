@@ -76,7 +76,7 @@ export const  ImageContainer = ({ location }) => {
           </>
         )
       ) : null}
-      {console.log(currentImageUUID) || !!currentImageUUID && <ImageDetails id={currentImageUUID} />}
+      {!!currentImageUUID && <ImageDetails id={currentImageUUID} />}
       <Countdown counter={counter} />
     </Fragment>
   );
