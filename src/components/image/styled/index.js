@@ -10,6 +10,7 @@ const fadeIn = keyframes`
 `;
 
 export const StyledImageContainer = styled.div`
+    position: relative;
     height: 100%;
     width: 100%;
     ${({width, height, number}) => width > height && css`
@@ -20,9 +21,10 @@ export const StyledImageContainer = styled.div`
 export const StyledImage = styled.img`
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
-    /*animation: 0.5s ${fadeIn} ease-out;*/
+    animation: 0.5s ${fadeIn} ease-out;
     transition: all 0.3s ease-out;
     cursor: pointer;
+    visibility: ${({ isLoaded }) => isLoaded ? `visible` : `hidden`};
 
     &:hover {
         -webkit-filter: none;
