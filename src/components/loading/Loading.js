@@ -3,6 +3,10 @@ import { LoadingContainer } from './styled'
 
 export const Loading = () => {
   return (
-    <LoadingContainer />
+    <LoadingContainer>
+      <div></div>
+      <div></div>
+      <div></div>
+    </LoadingContainer>
   )
 }
