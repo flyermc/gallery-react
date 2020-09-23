@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   display: grid;
   grid-auto-flow: row;
-  max-height: 72vh;
-  max-width: 85vw;
+  height: 72vh;
+  width: 85vw;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(6, 12vh);
   column-gap: 5px;
