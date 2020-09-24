@@ -128,16 +128,17 @@ export const Archive = React.memo(() => {
     setOpened(state)
   }
 
-    const shortMonth = React.useRef(null)
+  const shortMonth = React.useRef(null)
 
-    React.useEffect(() => {
-        if (month && findMonth(month) >= 0) {
-            const index = findMonth(month)
-            shortMonth.current = MONTHS[index][1]
-        } else if (month === null) {
-          shortMonth.current = null
-        }
-    }, [month, shortMonth])
+  React.useEffect(() => {
+    if (month && findMonth(month) >= 0) {
+      const index = findMonth(month)
+      shortMonth.current = MONTHS[index][1]
+    } else if (month === null) {
+      shortMonth.current = null
+    }
+    setOpened(false)
+  }, [month])
 
   return (
     <>
