@@ -1,4 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const linkFadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`
 
 export const StyledSidebar = styled.div`
   position: absolute;
@@ -84,6 +95,8 @@ export const StyledCollapsedButton = styled.img`
 `
 
 export const StyledMenuItem = styled.div`
-    padding-left: ${({ inner }) => inner ? '20px' : '0'}
+    padding-left: ${({ inner }) => inner ? '20px' : '0'};
+    opacity: 0;
+    animation: ${linkFadeIn} 0.3s ease forwards ${({index}) => index ? (index - 1) / 25 : 0}s;
 `
 
