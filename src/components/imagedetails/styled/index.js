@@ -2,15 +2,18 @@ import styled, { keyframes } from 'styled-components';
 
 const pulse = keyframes`
 	0% {
-		transform: scale(1);
+    transform: scale(1);
+    // box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
 	}
 
-	60% {
-		transform: scale(1.3);
+	70% {
+    transform: scale(1.3);
+    // box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
 	}
 
 	100% {
-		transform: scale(1);
+    transform: scale(1);
+    // box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
 	}
 `;
 
@@ -32,13 +35,9 @@ export const StyledImage = styled.img`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     height: 90vh;
     widht: auto;
-    transition: all 2s ease-in-out;
-    &:hover {
-        transform: scale(1.0005) translate(-50%, -50%);
-    }
     cursor: pointer;
 `;
 
@@ -55,15 +54,9 @@ export const StyledLike = styled.img`
     filter: brightness(0.5);
     animation: ${({empty}) => empty ? pulse : '' } 2s infinite;
     &:hover {
-        animation: pulse 2s infinite;
+        animation: none;
         filter: brightness(1);
         transform: scale(1.3);
     }
 `;
 
-export const LoadingContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-`
