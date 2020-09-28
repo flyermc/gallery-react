@@ -19,6 +19,8 @@ export const StyledSidebar = styled.div`
   background: #263d53;
   color: white;
   transition: width 0.5s;
+  overflow-y: auto;
+  overflow-x: hidden;
 `
 
 export const StyledHambItem = styled.div`
