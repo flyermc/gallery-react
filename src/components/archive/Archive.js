@@ -77,10 +77,10 @@ const Calendar = React.memo(() => {
     setMonth(null)
   }
 
-  const selectedCell = (item, inner) => {
+  const selectedCell = (item, inner, index) => {
     return (
       <StyledCurrentSelectedItem>
-        <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
+        <StyledMenuItem index={index} inner={inner}>{item}</StyledMenuItem>
       </StyledCurrentSelectedItem>
     )
   }
@@ -89,23 +89,23 @@ const Calendar = React.memo(() => {
     return (
       <StyledItem onClick={() => handleClick(item)} key={item} index={index}>
         { !inner && item !== LATEST_TITLE && <StyledCollapsedButton src={year && year === item ? ExpandedIcon : CollapsedIcon} alt='Click this' /> }
-        <StyledMenuItem inner={inner}>{item}</StyledMenuItem>
+        <StyledMenuItem index={index} inner={inner}>{item}</StyledMenuItem>
       </StyledItem>
     )
   }
 
-  const itemBlock = (items, handleOnClick, inner=false) => items.map((item, index) => {
-    return (
-      <>
-        {
-          inner && findMonth(month) == index && year === yearFromStore
-            ? selectedCell(item, inner)
-            : regularCell(item, inner, handleOnClick, index + 1)
-        }
-        { year === item && itemBlock(MONTHS.map((month) => month[0]), setMonth, true) }
-      </>
-    )}
-  )
+  const itemBlock = (items, handleOnClick, inner=false) => {
+    return items.map((item, index) => (
+        <>
+          {
+            inner && findMonth(month) == index && year === yearFromStore
+              ? selectedCell(item, inner, index + 1)
+              : regularCell(item, inner, handleOnClick, index + 1)
+          }
+          { year === item && itemBlock(MONTHS.map((month) => month[0]), setMonth, true) }
+        </>
+      ))
+  }
 
   return (
     <>
