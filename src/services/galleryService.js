@@ -1,4 +1,4 @@
-const IP_ADDRESS = process.env.REMOTE_IP || '18.158.181.102';
+const IP_ADDRESS = process.env.REMOTE_IP || '52.29.189.194';
 const HOST = `http://${IP_ADDRESS}:8010/`;
 const IMAGES_URL = HOST + 'images/';
 const IMAGE_URL = HOST + 'image/'
