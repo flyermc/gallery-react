@@ -7,9 +7,11 @@ import { useClickOutsideHook } from '../../hooks/ClickOutsideHook';
 import { currentImageSelector } from '../../selectors/imagesSelector';
 import { getImageRequest } from '../../services/galleryService'
 import { Loading } from '../../components'
+import LeftArrow from '../../icons/left-arrow.svg'
+import RightArrow from '../../icons/right-arrow.svg'
 
 import { Like } from './Like';
-import { ImageContainer, StyledImage } from './styled';
+import { ImageContainer, StyledImage, StyledArrowContainer } from './styled';
 
 export const ImageDetails = memo(({ id, like }) => {
   const likeRef = useRef(null);
@@ -44,7 +46,13 @@ export const ImageDetails = memo(({ id, like }) => {
       }
       { image && (
         <ImageContainer loading={loading}>
-          <StyledImage src={image.photo} alt='Loading...' onLoad={imageLoaded} />
+          <StyledArrowContainer>
+            <img src={LeftArrow} alt='left-arrow' />
+          </StyledArrowContainer>
+          <StyledArrowContainer style={{'right': 0}}>
+            <img src={RightArrow} alt='right-arrow' />
+          </StyledArrowContainer>
+          <StyledImage src={image.photo} alt='Image' onLoad={imageLoaded} />
           <div ref={likeRef}>
             <Like imageUuid={image.uuid} likeFrom={like} />
           </div>

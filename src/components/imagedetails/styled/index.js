@@ -41,6 +41,35 @@ export const StyledImage = styled.img`
     cursor: pointer;
 `;
 
+export const StyledArrowContainer = styled.div`
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 60px;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+`
+
+export const StyledLeftArrow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  heigth: 30px;
+  width: 20px;
+  cursor: pointer;
+  background-color: black;
+  &:hover: {
+    background: rgba(0, 0, 0, .4);
+  }
+`
+
+export const StyledRightArrow = styled.div`
+
+`
+
 export const StyledLikeContainer = styled.div`
     position: absolute;
     bottom: ${props => props.bottom + 'px'};
