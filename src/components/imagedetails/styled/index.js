@@ -45,7 +45,7 @@ export const StyledArrowContainer = styled.div`
   position: absolute;
   display: flex;
   height: 100%;
-  width: 60px;
+  width: 100px;
   justify-content: center;
   cursor: pointer;
   &:hover {

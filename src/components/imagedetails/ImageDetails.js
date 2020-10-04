@@ -13,6 +13,24 @@ import RightArrow from '../../icons/right-arrow.svg'
 import { Like } from './Like';
 import { ImageContainer, StyledImage, StyledArrowContainer } from './styled';
 
+export const Arrow = ({ image, style }) => {
+  return (
+    <StyledArrowContainer style={style}>
+      <img src={image} alt='arrow' />
+    </StyledArrowContainer>
+  )
+}
+
+Arrow.propTypes = {
+  image: PropTypes.object.isRequired,
+  style: PropTypes.object
+}
+
+Arrow.defaultValues = {
+  style: {}
+}
+
+
 export const ImageDetails = memo(({ id, like }) => {
   const likeRef = useRef(null);
   const history = useHistory()
@@ -46,12 +64,8 @@ export const ImageDetails = memo(({ id, like }) => {
       }
       { image && (
         <ImageContainer loading={loading}>
-          <StyledArrowContainer>
-            <img src={LeftArrow} alt='left-arrow' />
-          </StyledArrowContainer>
-          <StyledArrowContainer style={{'right': 0}}>
-            <img src={RightArrow} alt='right-arrow' />
-          </StyledArrowContainer>
+          <Arrow image={LeftArrow} />
+          <Arrow image={RightArrow} style={{'right': 0}} />
           <StyledImage src={image.photo} alt='Image' onLoad={imageLoaded} />
           <div ref={likeRef}>
             <Like imageUuid={image.uuid} likeFrom={like} />
