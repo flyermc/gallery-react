@@ -13,26 +13,26 @@ import RightArrow from '../../icons/right-arrow.svg'
 import { Like } from './Like';
 import { ImageContainer, StyledImage, StyledArrowContainer } from './styled';
 
-export const Arrow = ({ image, style }) => {
+export const Arrow = ({ icon, right, imageUuid }) => {
   return (
-    <StyledArrowContainer style={style}>
-      <img src={image} alt='arrow' />
+    <StyledArrowContainer right={right}>
+      <img src={icon} alt='arrow' />
     </StyledArrowContainer>
   )
 }
 
 Arrow.propTypes = {
-  image: PropTypes.object.isRequired,
-  style: PropTypes.object
+  icon: PropTypes.object.isRequired,
+  imageUuid: PropTypes.string.isRequired,
+  right: PropTypes.bool
 }
 
 Arrow.defaultValues = {
-  style: {}
+  right: false
 }
 
 
 export const ImageDetails = memo(({ id, like }) => {
-  const likeRef = useRef(null);
   const history = useHistory()
   const openedImage = useSelector(currentImageSelector);
   const [ image, setImage ] = React.useState(openedImage)
@@ -40,9 +40,7 @@ export const ImageDetails = memo(({ id, like }) => {
 
   const imageLoaded = () => setLoading(false)
 
-  useClickOutsideHook(likeRef, () => {
-      history.push('/')
-  });
+  const closeImage = () => history.push('/')
 
   useEffect(() => {
     async function getImage() {
@@ -57,20 +55,20 @@ export const ImageDetails = memo(({ id, like }) => {
   return (
     <>
       { loading && (
-        <ImageContainer loading={!loading}>
+        <ImageContainer loading={!loading} onClick={closeImage}>
           <Loading />
         </ImageContainer>
         )
       }
       { image && (
-        <ImageContainer loading={loading}>
-          <Arrow image={LeftArrow} />
-          <Arrow image={RightArrow} style={{'right': 0}} />
-          <StyledImage src={image.photo} alt='Image' onLoad={imageLoaded} />
-          <div ref={likeRef}>
-            <Like imageUuid={image.uuid} likeFrom={like} />
-          </div>
-        </ImageContainer>
+        <>
+          <Arrow icon={LeftArrow} imageUuid='f33fghc12Rdf' />
+          <Arrow icon={RightArrow} right={true} imageUuid='f33fghc12Rdf' />
+          <Like imageUuid={image.uuid} likeFrom={like} />
+          <ImageContainer loading={loading} onClick={closeImage}>
+            <StyledImage src={image.photo} alt='Image' onLoad={imageLoaded} />
+          </ImageContainer>
+        </>
         )
       }
     </>

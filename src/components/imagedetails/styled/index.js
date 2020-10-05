@@ -42,38 +42,24 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledArrowContainer = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   height: 100%;
   width: 100px;
   justify-content: center;
   cursor: pointer;
+  ${({ right }) => right ? `right: 0;` : `left: 0;`}
+  z-index: 3;
   &:hover {
     background: rgba(0, 0, 0, 0.5);
   }
-`
-
-export const StyledLeftArrow = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  heigth: 30px;
-  width: 20px;
-  cursor: pointer;
-  background-color: black;
-  &:hover: {
-    background: rgba(0, 0, 0, .4);
-  }
-`
-
-export const StyledRightArrow = styled.div`
-
 `
 
 export const StyledLikeContainer = styled.div`
     position: absolute;
     bottom: ${props => props.bottom + 'px'};
     left: 50%;
+    z-index: 3;
 `;
 
 export const StyledLike = styled.img`
