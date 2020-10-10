@@ -28,7 +28,7 @@ export const Like = memo(({ imageUuid, bottom }) => {
 
   return (
     <StyledLikeContainer bottom={bottom}>
-      {liked !== undefined && (
+      {console.log(liked) || liked !== undefined && (
         <StyledLike
           src={liked ? FilledHeart : EmptyHeart}
           alt="Heart"

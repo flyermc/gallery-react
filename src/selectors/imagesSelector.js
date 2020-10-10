@@ -32,8 +32,14 @@ export const likedImageSelector = createSelector(
   getCurrentImage,
   getHotImageSelector,
   (likes, currentImage, hotImage) => {
-    const image = currentImage || hotImage;
-    const id = image
+    console.log(currentImage, hotImage)
+    let id;
+    if (currentImage) {
+      id = currentImage
+    } else if (hotImage) {
+      id = hotImage.uuid
+    }
+
     if (likes && id) {
       return likes[id]
     }

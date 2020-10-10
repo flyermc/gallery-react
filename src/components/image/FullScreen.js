@@ -19,7 +19,7 @@ export const FullScreen = () => {
 
   return (
     <>
-      {hotImage && <FullScreenContainer imageSrc={hotImage.photo} />}
-      {hotImage && <Like imageUuid={hotImage.uuid} bottom={40}/>}
+      { hotImage && <FullScreenContainer imageSrc={hotImage.photo} />}
+      { hotImage && <Like imageUuid={hotImage.uuid} bottom={40}/>}
     </>);
 };
