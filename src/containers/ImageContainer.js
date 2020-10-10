@@ -75,7 +75,7 @@ export const  ImageContainer = ({ location }) => {
             <Archive />
           </>
         )
-      ) : null}
+      ) : null }
       {!!currentImageUUID && <ImageDetails id={currentImageUUID} />}
       <Countdown counter={counter} />
     </Fragment>

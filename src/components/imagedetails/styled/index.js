@@ -2,18 +2,15 @@ import styled, { keyframes } from 'styled-components';
 
 const pulse = keyframes`
 	0% {
-    transform: scale(1);
-    // box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 1)) brightness(0.6);
 	}
 
 	70% {
-    transform: scale(1.3);
-    // box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1)) brightness(1);
 	}
 
 	100% {
-    transform: scale(1);
-    // box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0)) brightness(0.6);
 	}
 `;
 
@@ -59,8 +56,7 @@ export const StyledArrowContainer = styled.div`
 `
 
 export const StyledLikeContainer = styled.div`
-  position: absolute;
-  bottom: ${props => props.bottom + 'px'};
+  position: absolute; bottom: ${props => props.bottom + 'px'};
   left: 50%;
   z-index: 3;
 `;
@@ -72,7 +68,6 @@ export const StyledLike = styled.img`
   filter: brightness(0.5);
   animation: ${({empty}) => empty ? pulse : '' } 2s infinite;
   &:hover {
-    animation: none;
     filter: brightness(1);
     transform: scale(1.3);
   }
