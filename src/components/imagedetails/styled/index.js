@@ -9,13 +9,9 @@ const pulse = keyframes`
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1)) brightness(1);
 	}
 
-	90% {
+	100% {
     filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0)) brightness(0.6);
 	}
-
-  100% {
-    filter: brightness(0.6);
-  }
 `;
 
 export const ImageContainer = styled.div`
