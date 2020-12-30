@@ -16,4 +16,4 @@ RUN yarn build
 FROM nginx:1.19
 
 COPY --from=build-stage /var/app/build /usr/share/nginx/html
-COPY --from=build-stage /var/app/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /var/app/nginx.conf /etc/nginx/conf.d/default.conf
