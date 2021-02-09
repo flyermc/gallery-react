@@ -20,7 +20,7 @@ import BackIcon from '../../icons/back-icon.svg'
 import CollapsedIcon from '../../icons/collapsed-icon.svg'
 import ExpandedIcon from '../../icons/expanded-icon.svg'
 
-const YEARS = ['2019', '2020']
+const YEARS = ['2019', '2020', '2021']
 const MONTHS = [
   ['January', 'Jan'],
   ['February', 'Feb'],
