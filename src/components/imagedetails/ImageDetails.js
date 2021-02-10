@@ -14,7 +14,7 @@ import LeftArrow from '../../icons/left-arrow.svg';
 import RightArrow from '../../icons/right-arrow.svg';
 
 import { Like } from './Like';
-import { ImageContainer, StyledImage, StyledArrowContainer } from './styled';
+import { ImageContainer, StyledImage, StyledArrowContainer, StyledArrowImage } from './styled';
 
 export const Arrow = ({ icon, imageUuid, loading, right }) => {
   const history = useHistory()
@@ -30,7 +30,7 @@ export const Arrow = ({ icon, imageUuid, loading, right }) => {
 
   return (
     <StyledArrowContainer right={right} onClick={changeImage}>
-      <img src={icon} alt='arrow' />
+      <StyledArrowImage src={icon} alt='arrow' />
     </StyledArrowContainer>
   )
 }

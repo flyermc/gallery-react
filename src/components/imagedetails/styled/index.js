@@ -41,6 +41,7 @@ export const StyledImage = styled.img`
 export const StyledArrowContainer = styled.div`
   position: fixed;
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100px;
   justify-content: center;
@@ -49,11 +50,18 @@ export const StyledArrowContainer = styled.div`
   z-index: 3;
   &:hover {
     background: rgba(0, 0, 0, 0.5);
+    img {
+      opacity: 0.5;
+    }
   }
   img {
-    opacity: 0.5;
+    opacity: 0.2;
   }
 `
+
+export const StyledArrowImage = styled.img`
+  height: 40px;
+`;
 
 export const StyledLikeContainer = styled.div`
   position: absolute; bottom: ${props => props.bottom + 'px'};
